@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary" href="/countries/create">Create a new country</a>
+            <a class="btn btn-primary" href="/countries/create">Create a new country</a>            
         </div>
     </div>
     <br>

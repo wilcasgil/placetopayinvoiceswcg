@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Country;
-use Illuminate\Http\Request;
+use App\Http\Requests\Country\StoreRequest;
+use App\Http\Requests\Country\UpdateRequest;
+//use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
@@ -15,13 +17,14 @@ class CountryController extends Controller
     public function index()
     {
         //
-        return view('country.index', [
+        /* return view('country.index', [
             'countries' => Country::all()
             //'countries' => Country::all()->paginate()
-        ]);
+        ]); */
 
+        $countries = Country::all();
         //$countries = Country::with(['city', 'role'])->paginate();
-        //return response()->view('countries.index', compact('countries'));
+        return response()->view('country.index', compact('countries'));
     }
 
     /**
@@ -32,7 +35,10 @@ class CountryController extends Controller
     public function create()
     {
         //
-        return view('country.create');
+        //return view('country.create');
+
+        $countries = new Country;
+        return response()->view('country.create', compact('countries'));
     }
 
     /**
@@ -41,17 +47,20 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         //
-        $validData = $request->validate([
+        /* $validData = $request->validate([
             'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:countries'
-        ]);
+        ]); */
         $country = new Country();
-        $country->name = $request->get('name');
+        //$country->name = $request->get('name');
+        $country->name = $request->input('name');
         $country->save();
 
         return redirect('/countries');
+        //return redirect()->route('country.index')->withSuccess(__('country created successfully!'));
+        //return redirect()->route('country.index');        
     }
 
     /**
@@ -60,17 +69,19 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Country $country)
     {
         //
-        return view('country.show', [
+        /* return view('country.show', [
             'country' => $country
-        ]);
+        ]); */
+
+        return response()->view('country.show', compact('countries'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *7
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -81,6 +92,9 @@ class CountryController extends Controller
         return view('country.edit', [
             'country' => $country
         ]);
+
+        //return response()->view('country.edit', compact('countries'));
+        
     }
 
     /**
@@ -90,13 +104,14 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Country $country)
     {
         //
-        $validData = $request->validate([
+        /* $validData = $request->validate([
             'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:countries'
-        ]);
-        $country = Country::findOrFail($id);
+        ]); */
+        //$country = Country::findOrFail($id);
+        //$country->name = $request->get('name');
         $country->name = $request->get('name');
         $country->save();
         return redirect('/countries');
