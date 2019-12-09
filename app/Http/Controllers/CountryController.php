@@ -94,7 +94,7 @@ class CountryController extends Controller
     {
         //
         $validData = $request->validate([
-            'name' => 'required|min:3|alpha|max:100'
+            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:countries'
         ]);
         $country = Country::findOrFail($id);
         $country->name = $request->get('name');

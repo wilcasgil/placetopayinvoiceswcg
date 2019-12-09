@@ -17,11 +17,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/billingplacetopaywcg/admin">Home</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="/billingplacetopaywcg/users/add">Users</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/billingplacetopaywcg/billStates/list">Bills</a>
+                    <a class="nav-link" href="/billingplacetopaywcg/billStates/list">Invoices</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/billingplacetopaywcg/customers/list">Customers</a>
