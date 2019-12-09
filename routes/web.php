@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('countries', 'ContryController');
-Route::resource('/countries', 'CountryController');
+//Auth::routes();
+
+Route::resource('countries', 'CountryController');
+//Route::resource('/countries', 'CountryController');
 Route::get('/countries/{id}/confirmDelete', 'CountryController@confirmDelete');

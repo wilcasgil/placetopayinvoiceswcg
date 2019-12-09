@@ -15,13 +15,14 @@ class CountryController extends Controller
     public function index()
     {
         //
-        return view('country.index', [
+        /* return view('country.index', [
             'countries' => Country::all()
             //'countries' => Country::all()->paginate()
-        ]);
+        ]); */
 
+        $countries = Country::all();
         //$countries = Country::with(['city', 'role'])->paginate();
-        //return response()->view('countries.index', compact('countries'));
+        return response()->view('country.index', compact('countries'));
     }
 
     /**
@@ -32,7 +33,10 @@ class CountryController extends Controller
     public function create()
     {
         //
-        return view('country.create');
+        //return view('country.create');
+
+        $countries = new Country;
+        return response()->view('country.create', compact('countries'));
     }
 
     /**
@@ -52,6 +56,8 @@ class CountryController extends Controller
         $country->save();
 
         return redirect('/countries');
+        //return redirect()->route('country.index')->withSuccess(__('country created successfully!'));
+        //return response()->view('country.index', compact('countries'));
     }
 
     /**
@@ -63,14 +69,16 @@ class CountryController extends Controller
     public function show($id)
     {
         //
-        return view('country.show', [
+        /* return view('country.show', [
             'country' => $country
-        ]);
+        ]); */
+
+        return response()->view('country.show', compact('countries'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *7
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -81,6 +89,7 @@ class CountryController extends Controller
         return view('country.edit', [
             'country' => $country
         ]);
+        
     }
 
     /**
