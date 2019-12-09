@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 use App\Client;
+use App\Country;
 use App\Http\Requests\Client\StoreRequest;
 use App\Http\Requests\Client\UpdateRequest;
 
@@ -18,8 +19,8 @@ class ClientController extends Controller
     public function index()
     {
         //
-        $customers = Client::with(['country'])->paginate();
-        return response()->view('client.index', compact('customers'));
+        $clients = Client::with(['country'])->paginate();
+        return response()->view('client.index', compact('clients'));
     }
 
     /**
@@ -30,8 +31,8 @@ class ClientController extends Controller
     public function create()
     {
         //
-        $customers = new Client;
-        return response()->view('client.create', compact('customers'));
+        $clients = new Client;
+        return response()->view('client.create', compact('clients'));
     }
 
     /**
@@ -43,15 +44,17 @@ class ClientController extends Controller
     public function store(StoreRequest $request)
     {
         //
-        $customers = new Client;
-        $customers->name = $request->input('name');
-        $customers->last_name = $request->input('last_name');
-        $customers->email = $request->input('email');
-        $customers->country_id = $request->input('country');
+        $client = new Client;
+        $client->name = $request->input('name');
+        $client->last_name = $request->input('last_name');
+        $client->email = $request->input('email');
+        $client->country_id = $request->input('country');
+        $client->status = $request->input('status');
 
-        $customers->save();
+        $client->save();
 
-        return redirect()->route('client.index')->withSuccess(__('Client created successfully!'));
+        return redirect('/clients');
+        //return redirect()->route('client.index')->withSuccess(__('Client created successfully!'));
     }
 
     /**
@@ -63,8 +66,8 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         //
-        $customers->load('country');
-        return response()->view('client.show', compact('customers'));
+        //$customers->load('country');
+        return response()->view('client.show', compact('clients'));
     }
 
     /**
@@ -76,6 +79,10 @@ class ClientController extends Controller
     public function edit($id)
     {
         //
+        $client = Client::findOrFail($id);
+        return view('client.edit', [
+            'client' => $client
+        ]);
     }
 
     /**
@@ -85,9 +92,18 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Client $client)
     {
         //
+        $client->name = $request->input('name');
+        $client->last_name = $request->input('last_name');
+        $client->email = $request->input('email');
+        $client->country_id = $request->input('country_id');
+        
+        $country->save();
+
+        return redirect('/clients');
+
     }
 
     /**

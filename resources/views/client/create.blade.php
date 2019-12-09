@@ -1,23 +1,57 @@
 @extends('layouts.app')
+
 @section('content')
-    <div class="card card-default">
-        <div class="card-header pb-0">
-            <h5 class="card-title">{{ __('New client') }}</h5>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('client.store') }}" method="post" id="clients-form">
-                @csrf
-                @include('clients.__form')
-            </form>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
-            <a href="{{ route('client.index') }}" class="btn btn-danger">
-                <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
-            </a>
-            <button type="submit" class="btn btn-success" form="clients-form">
-                <i class="fas fa-save"></i> {{ __('Save') }}
-            </button>
+<div class="row">
+        <div class="col">
+            <h1>New Client</h1>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-secondary" href="/clients">Back</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="/clients" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a client name" value="{{ old('name') }}">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a client last name" value="{{ old('last_name') }}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Type a client email" value="{{ old('email') }}">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select class="form-control custom-select {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country" id="country" required>
+                        <option value="">Please select a country</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country->id }}" {{ old('country', $clients->country_id) == $country->id ? 'selected' : ''}}>{{ $country->name }}</option>
+                        @endforeach
+                    </select>                    
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <input type="text" class="form-control" id="status" name="status" placeholder="Select a status" value="{{ old('status') }}">
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 @endsection
