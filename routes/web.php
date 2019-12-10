@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::resource('countries', 'CountryController');
 //Route::resource('/countries', 'CountryController');
 Route::get('/countries/{id}/confirmDelete', 'CountryController@confirmDelete');
+
+Route::resource('clients', 'ClientController');
