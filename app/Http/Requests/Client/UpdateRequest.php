@@ -25,10 +25,15 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:customers',
-            'last_name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:customers',
-            'email' => 'required|email|max:90|unique:customers,email',
-            'country' => 'required|numeric|exists:countries,id',
+            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
+            'last_name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
+            /*'email' => [
+                'required',
+                'email',
+                'max:90',
+                Rule::unique('clients', 'email')->ignore($this->route('clients')->id),
+            ], */
+            'email' => 'required|email|max:90|unique:clients,email',
         ];
     }
 }

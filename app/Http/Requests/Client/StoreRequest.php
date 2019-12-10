@@ -27,9 +27,7 @@ class StoreRequest extends FormRequest
             //
             'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
             'last_name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
-            'email' => 'required|email|max:90|unique:clients,email',
-            'country' => 'required|numeric|exists:clients,id',
-            //'status' => 'required|numeric|exists:clients,id',
+            'email' => 'required|email|max:90|unique:clients,email',            
         ];
     }
 }
