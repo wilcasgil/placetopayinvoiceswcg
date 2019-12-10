@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Category;
+use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
+//use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,6 +17,10 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories = Category::all();
+        //$categories = Category::all()->paginate();
+
+        return response()->view('category.index', compact('categories'));
     }
 
     /**
@@ -24,6 +31,9 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        $categories = new Category;
+
+        return response()->view('category.create', compact('categories'));
     }
 
     /**
@@ -32,9 +42,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         //
+        $category = new Category();        
+        $category->name = $request->input('name');
+        $category->save();
+
+        return redirect('/categories');
     }
 
     /**
@@ -43,9 +58,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
+        return response()->view('category.show', compact('categories'));
     }
 
     /**
@@ -57,6 +73,10 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::findOrFail($id);
+        return view('category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -66,9 +86,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Category $category)
     {
         //
+        $category->name = $request->get('name');
+        $category->save();
+        return redirect('/categories');
     }
 
     /**
@@ -80,5 +103,23 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect('/categories');
+    }
+
+    /**
+     * confirmDelete
+     *
+     * @param  mixed $id
+     *
+     * @return void
+     */
+    public function confirmDelete($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('category.confirmDelete', [
+            'category' => $category
+        ]);
     }
 }
