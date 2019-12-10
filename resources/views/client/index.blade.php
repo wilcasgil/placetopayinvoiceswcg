@@ -18,9 +18,7 @@
                 <thead>                
                     <th>Name</th>
                     <th>Last name</th>                    
-                    <th>Email</th>
-                    <th>Country</th>
-                    <th>Status</th>
+                    <th>Email</th>                    
                     <th>Action</th>
                     <th>Action</th>
                 </thead>
@@ -30,8 +28,6 @@
                         <td><a href="/clients/{{ $client->id }}">{{ $client->name }}</a></td>                    
                         <td>{{ $client->last_name }}</td>
                         <td>{{ $client->email }}</td>
-                        <td>{{ $client->country }}</td>
-                        <td>{{ $client->status }}</td>
                         <td><a href="/clients/{{ $client->id }}/edit">Edit</a></td>
                         <td><a href="/clients/{{ $client->id }}/confirmDelete">Delete</a></td>
                     </tr>

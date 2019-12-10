@@ -3,18 +3,18 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h1>Delete Country {{ $country->id }}</h1>
+            <h1>Delete Client {{ $client->id }}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/countries">Back</a>
+            <a class="btn btn-secondary" href="/clients">Back</a>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col">
-            <form action="/countries/{{ $country->id }}" method="POST">
+            <form action="/clients/{{ $client->id }}" method="POST">
                 @csrf
                 @method('delete')                
                 <button class="btn btn-primary" type="submit">Delete</button>
