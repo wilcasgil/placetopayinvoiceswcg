@@ -31,9 +31,11 @@ class SubcategoryController extends Controller
     public function create()
     {
         //
-        $subcategory = new Subcategory;
+        //$subcategory = new Subcategory;
+        $categories = Category::all();
 
-        return response()->view('subcategory.create', compact('subcategory'));
+        //return response()->view('subcategory.create', compact('subcategory'));
+        return response()->view('subcategory.create', compact('categories'));
     }
 
     /**
