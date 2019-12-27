@@ -51,7 +51,7 @@ class SubcategoryController extends Controller
         $subcategory->name = $request->input('name');
         $subcategory->price = $request->input('price');
         $subcategory->stock = $request->input('stock');
-        $subcategory->category_id = $request->input('category');
+        $subcategory->category_id = $request->input('category_id');
         
         $subcategory->save();
         
