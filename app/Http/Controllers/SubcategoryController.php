@@ -102,10 +102,10 @@ class SubcategoryController extends Controller
     {
         //
         //$subcategory = Subcategory::findOrFail($id);
-        $subcategory->name = $request->get('name');
-        $subcategory->price = $request->get('price');
-        $subcategory->stock = $request->get('stock');
-        $subcategory->category_id = $request->get('category_id');
+        $subcategory->name = $request->input('name');
+        $subcategory->price = $request->input('price');
+        $subcategory->stock = $request->input('stock');
+        $subcategory->category_id = $request->input('category_id');
         
         $subcategory->save();
 
