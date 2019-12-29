@@ -25,10 +25,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:subcategories',
-            'price' => 'required|numeric',
-            'stock' => 'required|numeric',
-            'category' => 'required|numeric|exists:categories,id',
+            'name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
+            'price' => 'numeric',
+            'stock' => 'numeric',            
+            'category' => 'numeric|exists:categories,id',
         ];
     }
 }

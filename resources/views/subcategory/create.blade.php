@@ -38,11 +38,11 @@
                     <input type="text" class="form-control" id="stock" name="stock" placeholder="Type a stock" value="{{ old('stock') }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="room">Category Type</label>
-                    <select class="form-control" id="category" name="category" required>
+                    <label for="room">Category</label>
+                    <select class="form-control" id="category_id" name="category_id" required>
                         <option value="">Please select a category</option>
-                            @foreach ($subcategory as $category)
-                                <option value="{{$category->id}}">{{ $category->id }} - ${{ $category->name }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                     </select>
                 </div>

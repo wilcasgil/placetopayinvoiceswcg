@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
         <div class="col">
-            <h1>Edit Product or Service</h1>
+            <h1>Edit Product or Service {{ $subcategory->id }}</h1>
         </div>
     </div>
     <div class="row">
@@ -23,26 +23,27 @@
                     </ul>
                 </div>
             @endif
-            <form action="/subcategories" method="POST">
+            <form action="{{ route('subcategories.update', $subcategory) }}" method="POST">
                 @csrf
+                @method('PATCH')
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a product or service name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a product or service name" value="{{ $subcategory->name }}" required>
                 </div>
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Type a price" value="{{ old('price') }}" required>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Type a price" value="{{ $subcategory->price }}" required>
                 </div>
                 <div class="form-group">
                     <label for="stock">Stock:</label>
-                    <input type="text" class="form-control" id="stock" name="stock" placeholder="Type a stock" value="{{ old('stock') }}" required>
+                    <input type="text" class="form-control" id="stock" name="stock" placeholder="Type a stock" value="{{ $subcategory->stock }}" required>
                 </div>
                 <div class="form-group">
                     <label for="room">Category Type</label>
-                    <select class="form-control" id="category" name="category" required>
-                        <option value="">Please select a category</option>
-                            @foreach ($subcategory as $category)
-                                <option value="{{$category->id}}">{{ $category->id }} - ${{ $category->name }}</option>
+                    <select class="form-control" id="category_id" name="category_id" required>
+                        <option value="">{{ $subcategory->category->name }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                     </select>
                 </div>
