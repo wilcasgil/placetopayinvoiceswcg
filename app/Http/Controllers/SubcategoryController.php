@@ -75,13 +75,13 @@ class SubcategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Subcategory $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subcategory $subcategory)
     {
         //
-        $subcategory = Subcategory::findOrFail($id);
+        //$subcategory = Subcategory::findOrFail($id);
         $categories = Category::all();
 
         /* return view('subcategory.edit', [
@@ -94,23 +94,21 @@ class SubcategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  UpdateRequest $request
+     * @param  Subcategory $subcategory
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Subcategory $subcategory)
     {
         //
-        //$subcategory = Subcategory::findOrFail($id);
-        $subcategory->name = $request->get('name');
-        $subcategory->price = $request->get('price');
-        $subcategory->stock = $request->get('stock');
-        $subcategory->category_id = $request->get('category_id');
+        $subcategory->name = $request->input('name');
+        $subcategory->price = $request->input('price');
+        $subcategory->stock = $request->input('stock');
+        $subcategory->category_id = $request->input('category_id');
         
         $subcategory->save();
 
-        return redirect()->route('subcategories.index')->withSuccess(__('Subcategory updated successfully!'));
-        //return redirect('/subcategories');
+        return redirect()->route('subcategories.index')->withSuccess(__('Subcategory updated successfully!'));        
     }
 
     /**
