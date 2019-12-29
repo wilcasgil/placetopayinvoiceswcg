@@ -24,4 +24,5 @@ Route::resource('categories', 'CategoryController');
 Route::get('/categories/{id}/confirmDelete', 'CategoryController@confirmDelete');
 
 Route::resource('subcategories', 'SubcategoryController');
+//Route::put('/subcategories/{id}', 'SubcategoryController@update')->name('subcategory.update');
 Route::get('/subcategories/{id}/confirmDelete', 'SubcategoryController@confirmDelete');

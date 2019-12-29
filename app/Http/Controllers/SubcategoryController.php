@@ -82,9 +82,13 @@ class SubcategoryController extends Controller
     {
         //
         $subcategory = Subcategory::findOrFail($id);
-        return view('subcategory.edit', [
+        $categories = Category::all();
+
+        /* return view('subcategory.edit', [
             'subcategory' => $subcategory
-        ]);
+        ]); */
+
+        return response()->view('subcategory.edit', compact('subcategory','categories'));
     }
 
     /**
@@ -97,15 +101,16 @@ class SubcategoryController extends Controller
     public function update(UpdateRequest $request, Subcategory $subcategory)
     {
         //
-        $subcategory = new Subcategory;
-        $subcategory->name = $request->input('name');
-        $subcategory->price = $request->input('price');
-        $subcategory->stock = $request->input('stock');
-        $subcategory->category_id = $request->input('category');
+        //$subcategory = Subcategory::findOrFail($id);
+        $subcategory->name = $request->get('name');
+        $subcategory->price = $request->get('price');
+        $subcategory->stock = $request->get('stock');
+        $subcategory->category_id = $request->get('category_id');
         
         $subcategory->save();
-        
-        return redirect('/subcategories');
+
+        return redirect()->route('subcategories.index')->withSuccess(__('Subcategory updated successfully!'));
+        //return redirect('/subcategories');
     }
 
     /**
