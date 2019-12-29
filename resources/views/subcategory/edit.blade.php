@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
         <div class="col">
-            <h1>Edit Product or Service</h1>
+            <h1>Edit Product or Service {{ $subcategory->id }}</h1>
         </div>
     </div>
     <div class="row">
@@ -23,8 +23,9 @@
                     </ul>
                 </div>
             @endif
-            <form action="/subcategories" method="POST">
+            <form action="/subcategories/{{ $subcategory->id }}" method="POST">                
                 @csrf
+                @method('put')
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Type a product or service name" value="{{ old('name') }}" required>
@@ -39,10 +40,10 @@
                 </div>
                 <div class="form-group">
                     <label for="room">Category Type</label>
-                    <select class="form-control" id="category" name="category" required>
+                    <select class="form-control" id="category_id" name="category_id" required>
                         <option value="">Please select a category</option>
-                            @foreach ($subcategory as $category)
-                                <option value="{{$category->id}}">{{ $category->id }} - ${{ $category->name }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                     </select>
                 </div>
