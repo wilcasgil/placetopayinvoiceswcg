@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>Edit Product or Service {{ $subcategory->id }}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/subcategories">Back</a>
+            <a class="btn btn-secondary" href="{{ route('subcategories.index') }}">Back</a>
         </div>
     </div>
     <br>
