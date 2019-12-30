@@ -63,13 +63,13 @@ class SubcategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Subcategory $subcategory
      * @return \Illuminate\Http\Response
      */
     public function show(Subcategory $subcategory)
     {
         //
-        return response()->view('subcategory.show', compact('subcategories'));
+        return response()->view('subcategory.show', compact('subcategory'));
     }
 
     /**
@@ -122,7 +122,8 @@ class SubcategoryController extends Controller
         //
         $subcategory = Subcategory::findOrFail($id);
         $subcategory->delete();
-        return redirect('/subcategories');
+        return redirect()->route('subcategories.index')->with('success','Subcategory Deleted');
+        //return redirect('/subcategories');
     }
 
     /**
@@ -135,8 +136,10 @@ class SubcategoryController extends Controller
     public function confirmDelete($id)
     {
         $subcategory = Subcategory::findOrFail($id);
-        return view('subcategory.confirmDelete', [
-            'subcategory' => $subcategory
-        ]);
+        // return view('subcategory.confirmDelete', [
+        //     'subcategory' => $subcategory
+        // ]);
+
+        return response()->view('subcategory.confirmDelete', compact('subcategory'));
     }
 }
