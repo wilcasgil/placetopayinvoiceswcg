@@ -8,30 +8,27 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary" href="/categories/create">Create a new category</a>            
+            <a class="btn btn-primary" href="{{ route('categories.create') }}">Create a new category</a>
         </div>
     </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <table class="table table-hover table-sm table-dark">
-                <thead>                
-                    <th>Name</th>
-                    <th>Created at</th>
-                    <th>Action</th>
-                    <th>Action</th>
-                </thead>
-                <tbody>
-                @foreach($categories as $category)
-                    <tr>
-                        <td><a href="/categories/{{ $category->id }}">{{ $category->name }}</a></td>                    
-                        <td>{{ $category->created_at }}</td>
-                        <td><a href="/categories/{{ $category->id }}/edit">Edit</a></td>
-                        <td><a href="/categories/{{ $category->id }}/confirmDelete">Delete</a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>             
+    <br>    
+    <div class="table-responsive-lg">
+        <table class="table table-hover table-sm table-dark">
+            <thead>                
+                <th>Name</th>
+                <th>Action</th>
+                <th>Action</th>
+                <th class="text-right"></th>
+            </thead>
+            <tbody>
+            @foreach($categories as $category)
+                <tr>
+                    <td><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></td>
+                    <td><a href="{{ route('categories.edit', $category) }}">Edit</a></td>
+                    <td><a href="/categories/{{ $category->id }}/confirmDelete">Delete</a></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>                 
 @endsection

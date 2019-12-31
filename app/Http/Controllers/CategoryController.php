@@ -47,21 +47,22 @@ class CategoryController extends Controller
         //
         $category = new Category();        
         $category->name = $request->input('name');
+        
         $category->save();
 
-        return redirect('/categories');
+        return redirect()->route('categories.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
     {
         //
-        return response()->view('category.show', compact('categories'));
+        return response()->view('category.show', compact('category'));
     }
 
     /**
