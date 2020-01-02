@@ -25,3 +25,6 @@ Route::get('/categories/{id}/confirmDelete', 'CategoryController@confirmDelete')
 
 Route::resource('subcategories', 'SubcategoryController');
 Route::get('/subcategories/{id}/confirmDelete', 'SubcategoryController@confirmDelete');
+
+Route::resource('paymentTypes', 'PaymentTypeController');
+route::get('paymentTypes/{id}/confirmDelete', 'PaymentTypeController@confirmDelete');
