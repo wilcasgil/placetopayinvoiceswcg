@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/clients">Back</a>
+            <a class="btn btn-secondary" href="{{ route('clients.index') }}">Back</a>
         </div>
     </div>
     <br>
@@ -23,19 +23,19 @@
                     </ul>
                 </div>
             @endif
-            <form action="/clients" method="POST">
+            <form action="{{ route('clients.store', $clients) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a client name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a client name" value="{{ old('name') }}" required>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a client last name" value="{{ old('last_name') }}">
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a client last name" value="{{ old('last_name') }}" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Type a client email" value="{{ old('email') }}">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Type a client email" value="{{ old('email') }}" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
