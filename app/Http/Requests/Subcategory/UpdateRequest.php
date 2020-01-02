@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Country;
+namespace App\Http\Requests\Subcategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +25,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:countries',
+            'name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
+            'price' => 'numeric',
+            'stock' => 'numeric',            
+            'category' => 'numeric|exists:categories,id',
         ];
     }
 }

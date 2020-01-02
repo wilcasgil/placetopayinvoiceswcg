@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,9 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
-            'last_name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
-            'email' => 'required|email|max:90|unique:clients,email',            
+            'name' => 'required|between:3,8|regex:/^[\pL\s\-]+$/u|unique:categories',
         ];
     }
 }

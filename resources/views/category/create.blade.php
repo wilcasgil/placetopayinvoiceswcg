@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
+<div class="row">
         <div class="col">
-            <h1>New Country</h1>
+            <h1>New Category</h1>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/countries">Back</a>
+            <a class="btn btn-secondary" href="{{ route('categories.index') }}">Back</a>
         </div>
     </div>
     <br>
@@ -23,12 +23,12 @@
                     </ul>
                 </div>
             @endif
-            <form action="/countries" method="POST">
+            <form action="{{ route('categories.store', $categories) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a country name" value="{{ old('name') }}">
-                </div>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a category name" value="{{ old('name') }}" required>
+                </div>                
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
         </div>

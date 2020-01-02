@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 //Auth::routes();
 
-Route::resource('countries', 'CountryController');
-//Route::resource('/countries', 'CountryController');
-Route::get('/countries/{id}/confirmDelete', 'CountryController@confirmDelete');
-
 Route::resource('clients', 'ClientController');
+Route::get('/clients/{id}/confirmDelete', 'ClientController@confirmDelete');
+
+Route::resource('categories', 'CategoryController');
+Route::get('/categories/{id}/confirmDelete', 'CategoryController@confirmDelete');
+
+Route::resource('subcategories', 'SubcategoryController');
+Route::get('/subcategories/{id}/confirmDelete', 'SubcategoryController@confirmDelete');

@@ -3,12 +3,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h1>Edit Country {{ $country->id }}</h1>
+            <h1>Edit Category {{ $category->id }}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/countries">Back</a>
+            <a class="btn btn-secondary" href="/categories">Back</a>
         </div>
     </div>
     <br>
@@ -23,12 +23,12 @@
                     </ul>
                 </div>
             @endif
-            <form action="/countries/{{ $country->id }}" method="POST">
+            <form action="{{ route('categories.update', $category) }}" method="POST">
                 @csrf
-                @method('put')
+                @method('PATCH')
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a country name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a category name" value="{{ $category->name }}" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>

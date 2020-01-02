@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use App\Client;
-use App\Country;
 use App\Http\Requests\Client\StoreRequest;
 use App\Http\Requests\Client\UpdateRequest;
-
+//use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -19,7 +17,7 @@ class ClientController extends Controller
     public function index()
     {
         //
-        $clients = Client::with(['country'])->paginate();
+        $clients = Client::all();
         return response()->view('client.index', compact('clients'));
     }
 
@@ -47,14 +45,12 @@ class ClientController extends Controller
         $client = new Client;
         $client->name = $request->input('name');
         $client->last_name = $request->input('last_name');
-        $client->email = $request->input('email');
-        $client->country_id = $request->input('country');
-        $client->status = $request->input('status');
+        $client->email = $request->input('email');        
+        //$clients->status = $request->input('status');
 
         $client->save();
 
-        return redirect('/clients');
-        //return redirect()->route('client.index')->withSuccess(__('Client created successfully!'));
+        return redirect('/clients');        
     }
 
     /**
@@ -65,8 +61,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
-        //$customers->load('country');
+        //        
         return response()->view('client.show', compact('clients'));
     }
 
@@ -95,12 +90,15 @@ class ClientController extends Controller
     public function update(UpdateRequest $request, Client $client)
     {
         //
-        $client->name = $request->input('name');
+        $client->name = $request->get('name');
+        $client->last_name = $request->get('last_name');
+        $client->email = $request->get('email');
+
+        /* $client->name = $request->input('name');
         $client->last_name = $request->input('last_name');
-        $client->email = $request->input('email');
-        $client->country_id = $request->input('country_id');
+        $client->email = $request->input('email');  */      
         
-        $country->save();
+        $client->save();
 
         return redirect('/clients');
 
@@ -115,5 +113,23 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return redirect('/clients');
+    }
+
+    /**
+     * confirmDelete
+     *
+     * @param  mixed $id
+     *
+     * @return void
+     */
+    public function confirmDelete($id)
+    {
+        $client = Client::findOrFail($id);
+        return view('client.confirmDelete', [
+            'client' => $client
+        ]);
     }
 }

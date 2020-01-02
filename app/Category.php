@@ -5,15 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Country extends Model
+class Category extends Model
 {
     //
+
     /**
-     * Relation between country and customers
+     * products_services
+     *
      * @return HasMany
      */
-    public function customers(): HasMany
+    public function subcategories(): HasMany
     {
-        return $this->hasMany(Client::class);
+        return $$this->hasMany(Subcategory::class);
     }
 }

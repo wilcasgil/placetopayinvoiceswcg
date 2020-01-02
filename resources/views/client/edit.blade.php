@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
-            <h1>New Client</h1>
+            <h1>Edit Client {{ $client->id }}</h1>
         </div>
     </div>
     <div class="row">
@@ -23,8 +23,9 @@
                     </ul>
                 </div>
             @endif
-            <form action="/clients" method="POST">
+            <form action="/clients/{{ $client->id }}" method="POST">
                 @csrf
+                @method('put')
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Type a client name" value="{{ old('name') }}">
