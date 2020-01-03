@@ -17,14 +17,14 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/billingplacetopaywcg/admin">Home</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="/billingplacetopaywcg/users/add">Users</a>
-                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/billingplacetopaywcg/billStates/list">Invoices</a>
+                    <a class="nav-link" href="{{ route('invoiceStates.index') }}">Invoices</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/billingplacetopaywcg/customers/list">Customers</a>
+                    <a class="nav-link" href="{{ route('subcategories.index') }}">Products and Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/billingplacetopaywcg/logout">Logout</a>                    
@@ -33,7 +33,6 @@
             <h1>Dashboard</h1>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
             </form>            
         </nav>
     </header>
@@ -50,7 +49,7 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
             <div class="card-footer text-muted text-center">
-                &reg; created by WCG-2019 for &copy; Placetopay
+                &copy; created by WCG-2019 for &reg; Placetopay
             </div>
         </div>            
     </footer>
