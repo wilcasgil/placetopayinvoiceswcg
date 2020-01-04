@@ -41,7 +41,7 @@
                                 <a class="nav-link active" href="/home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('invoiceStates.index') }}">Invoices</a>
+                                <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('subcategories.index') }}">Products and Services</a>

@@ -28,10 +28,13 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/subcategories/{id}/confirmDelete', 'SubcategoryController@confirmDelete');
 
     Route::resource('paymentTypes', 'PaymentTypeController');
-    route::get('paymentTypes/{id}/confirmDelete', 'PaymentTypeController@confirmDelete');
+    Route::get('paymentTypes/{id}/confirmDelete', 'PaymentTypeController@confirmDelete');
 
     Route::resource('invoiceStates', 'InvoiceStateController');
-    route::get('invoiceStates/{id}/confirmDelete', 'InvoiceStateController@confirmDelete');    
+    Route::get('invoiceStates/{id}/confirmDelete', 'InvoiceStateController@confirmDelete');
+
+    Route::resource('invoices', 'InvoiceController');
+    Route::get('invoices/{id}/confirmDelete', 'InvoiceController@confirmDelete');
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
