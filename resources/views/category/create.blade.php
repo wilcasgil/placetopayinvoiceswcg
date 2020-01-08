@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/categories">Back</a>
+            <a class="btn btn-secondary" href="{{ route('categories.index') }}">Back</a>
         </div>
     </div>
     <br>
@@ -23,11 +23,11 @@
                     </ul>
                 </div>
             @endif
-            <form action="/categories" method="POST">
+            <form action="{{ route('categories.store', $categories) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a category name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a category name" value="{{ old('name') }}" required>
                 </div>                
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>

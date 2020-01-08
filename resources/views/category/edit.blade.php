@@ -23,12 +23,12 @@
                     </ul>
                 </div>
             @endif
-            <form action="/categories/{{ $category->id }}" method="POST">
+            <form action="{{ route('categories.update', $category) }}" method="POST">
                 @csrf
-                @method('put')
+                @method('PATCH')
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a country name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a category name" value="{{ $category->name }}" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>

@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|between:3,8|regex:/^[\pL\s\-]+$/u|unique:categories',
+            'name' => 'between:3,8|regex:/^[\pL\s\-]+$/u',
         ];
     }
 }
