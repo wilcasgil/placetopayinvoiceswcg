@@ -7,6 +7,7 @@
         </div>
     </div>        
     <br>
+    
     <div class="table-responsive-lg">
         <h3>Details</h3>
         <table class="table table-hover table-sm">
@@ -32,6 +33,7 @@
         </table>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('subcategories.index') }}">Back</a>

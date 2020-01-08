@@ -6,7 +6,6 @@ use App\Subcategory;
 use App\Category;
 use App\Http\Requests\Subcategory\StoreRequest;
 use App\Http\Requests\Subcategory\UpdateRequest;
-//use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
 {
@@ -17,7 +16,6 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
         $subcategories = Subcategory::with(['category'])->paginate();
 
         return response()->view('subcategory.index', compact('subcategories'));
@@ -30,23 +28,19 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        //
-        //$subcategory = new Subcategory;
         $categories = Category::all();
-
-        //return response()->view('subcategory.create', compact('subcategory'));
+        
         return response()->view('subcategory.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
-        //
         $subcategory = new Subcategory;
         $subcategory->name = $request->input('name');
         $subcategory->price = $request->input('price');
@@ -55,9 +49,7 @@ class SubcategoryController extends Controller
         
         $subcategory->save();
         
-        return redirect('/subcategories');
-        //return redirect()->route('productsservices.index')->withSuccess(__('ProductService created successfully!'));
-        //return redirect('dashboard/reservations')->with('success', 'Reservation created!');
+        return redirect()->route('subcategories.index');
     }
 
     /**
@@ -68,7 +60,6 @@ class SubcategoryController extends Controller
      */
     public function show(Subcategory $subcategory)
     {
-        //
         return response()->view('subcategory.show', compact('subcategory'));
     }
 
@@ -80,13 +71,7 @@ class SubcategoryController extends Controller
      */
     public function edit(Subcategory $subcategory)
     {
-        //
-        //$subcategory = Subcategory::findOrFail($id);
         $categories = Category::all();
-
-        /* return view('subcategory.edit', [
-            'subcategory' => $subcategory
-        ]); */
 
         return response()->view('subcategory.edit', compact('subcategory','categories'));
     }
@@ -100,7 +85,6 @@ class SubcategoryController extends Controller
      */
     public function update(UpdateRequest $request, Subcategory $subcategory)
     {
-        //
         $subcategory->name = $request->input('name');
         $subcategory->price = $request->input('price');
         $subcategory->stock = $request->input('stock');
@@ -119,11 +103,11 @@ class SubcategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
         $subcategory = Subcategory::findOrFail($id);
+
         $subcategory->delete();
+
         return redirect()->route('subcategories.index')->with('success','Subcategory Deleted');
-        //return redirect('/subcategories');
     }
 
     /**
@@ -136,10 +120,7 @@ class SubcategoryController extends Controller
     public function confirmDelete($id)
     {
         $subcategory = Subcategory::findOrFail($id);
-        // return view('subcategory.confirmDelete', [
-        //     'subcategory' => $subcategory
-        // ]);
-
+        
         return response()->view('subcategory.confirmDelete', compact('subcategory'));
     }
 }

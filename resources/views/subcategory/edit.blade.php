@@ -12,6 +12,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             @if($errors->any())
