@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h2>Product or Service: {{ $category->name }}</h2>
+            <h2>Category: {{ $category->name }}</h2>
         </div>
     </div>        
     <br>
@@ -11,18 +11,24 @@
         <h3>Details</h3>
         <table class="table table-hover table-sm">
             <thead>
-                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
                 <th>Created at</th>
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
+            @foreach($category->subcategories as $subcategory)
             <tbody>                
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>{{ $category->updated_at }}</td>
+                    <td>{{ $subcategory->name }}</td>
+                    <td>{{ $subcategory->price }}</td>
+                    <td>{{ $subcategory->stock }}</td>
+                    <td>{{ $subcategory->created_at }}</td>
+                    <td>{{ $subcategory->updated_at }}</td>
                 </tr>
             </tbody>
+            @endforeach
         </table>
     </div>
     <br>
