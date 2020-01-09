@@ -5,7 +5,12 @@
         <div class="col">
             <h2>Client: {{ $client->name }} {{ $client->last_name }}</h2>
         </div>
-    </div>        
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Email: <a href="#">{{ $client->email }}</a></p>
+        </div>
+    </div>
     <br>
 
     <div class="table-responsive-lg">
