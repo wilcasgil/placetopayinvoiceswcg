@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
-//use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -16,9 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
         $categories = Category::all();
-        //$categories = Category::all()->paginate();
 
         return response()->view('category.index', compact('categories'));
     }
@@ -30,8 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
-        $categories = new Category;
+       $categories = new Category;
 
         return response()->view('category.create', compact('categories'));
     }
@@ -39,12 +36,11 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
-        //
         $category = new Category();        
         $category->name = $request->input('name');
         
@@ -61,7 +57,6 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
         return response()->view('category.show', compact('category'));
     }
 
@@ -71,28 +66,25 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
-        $category = Category::findOrFail($id);
-        return view('category.edit', [
-            'category' => $category
-        ]);
+        return response()->view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  UpdateRequest $request
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Category $category)
     {
-        //
-        $category->name = $request->get('name');
+        $category->name = $request->input('name');
+
         $category->save();
-        return redirect('/categories');
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -103,10 +95,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
         $category = Category::findOrFail($id);
+
         $category->delete();
-        return redirect('/categories');
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -119,8 +112,7 @@ class CategoryController extends Controller
     public function confirmDelete($id)
     {
         $category = Category::findOrFail($id);
-        return view('category.confirmDelete', [
-            'category' => $category
-        ]);
+        
+        return response()->view('category.confirmDelete', compact('category'));
     }
 }
