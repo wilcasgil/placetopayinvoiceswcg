@@ -24,11 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:subcategories',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
-            //'category' => 'required|numeric|exists:categories,id',
             'category' => 'numeric|exists:categories,id',
         ];
     }

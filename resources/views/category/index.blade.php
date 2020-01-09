@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>Categories</h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-primary" href="{{ route('categories.create') }}">Create a new category</a>
         </div>
     </div>
-    <br>    
+    <br>
+
     <div class="table-responsive-lg">
         <table class="table table-hover table-sm table-dark">
             <thead>                
@@ -30,5 +32,11 @@
             @endforeach
             </tbody>
         </table>
-    </div>                 
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="{{ route('subcategories.index') }}">Subcategories</a>
+        </div>
+    </div>
 @endsection

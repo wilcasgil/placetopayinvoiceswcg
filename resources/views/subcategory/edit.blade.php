@@ -12,6 +12,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             @if($errors->any())
@@ -23,6 +24,7 @@
                     </ul>
                 </div>
             @endif
+            
             <form action="{{ route('subcategories.update', $subcategory) }}" method="POST">
                 @csrf
                 @method('PATCH')
