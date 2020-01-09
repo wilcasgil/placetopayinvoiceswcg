@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>Invoices</h1>
         </div>
@@ -10,6 +10,9 @@
     <div class="row">
         <div class="col">
             <a class="btn btn-primary" href="{{ route('invoices.create') }}">Create a new invoice</a>
+        </div>        
+        <div class="col">
+            <a class="btn btn-primary" href="{{ route('invoiceStates.index') }}">Invoice State</a>
         </div>
     </div>
     <br>

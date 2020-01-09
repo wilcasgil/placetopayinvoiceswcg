@@ -23,7 +23,7 @@
             @foreach($category->subcategories as $subcategory)
             <tbody>                
                 <tr>
-                    <td>{{ $subcategory->name }}</td>
+                    <td><a href="{{ route('subcategories.show', $subcategory) }}">{{ $subcategory->name }}</a></td>
                     <td>{{ $subcategory->price }}</td>
                     <td>{{ $subcategory->stock }}</td>
                     <td>{{ $subcategory->created_at }}</td>
