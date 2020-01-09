@@ -29,6 +29,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,22 +42,19 @@
                                 <a class="nav-link active" href="/home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
+                                <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('subcategories.index') }}">Products and Services</a>
+                                <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
                             </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="/billingplacetopaywcg/logout">Logout</a>                    
-                            </li> -->
-                        </ul>
-                        <!-- <h1>Dashboard</h1> -->
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        </form>
+                    </ul>
+
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
                     <!-- </ul> -->
 
                     <!-- Right Side Of Navbar -->
@@ -114,6 +112,7 @@
             </div>
         </div>            
     </footer>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
