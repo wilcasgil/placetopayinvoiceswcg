@@ -111,7 +111,7 @@
     <footer class="footer">
         <div class="card">            
             <div class="card-footer text-muted text-center">
-                &copy; created by WCG-2019 for &reg; Placetopay
+                Copyright &copy; created by WCG - {{ date('Y') }} for &reg; Placetopay
             </div>
         </div>            
     </footer>
