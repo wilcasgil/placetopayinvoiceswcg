@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Subcategory;
+namespace App\Http\Requests\Invoice;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,10 +24,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
-            'price' => 'numeric',
-            'stock' => 'numeric',            
-            'category' => 'numeric|exists:categories,id',
+            'due_date' => 'date',
+            'receipt_date' => 'date',
+            'payment_type' => 'numeric|exists:payment_types,id',
+            'client' => 'numeric|exists:clients,id',
+            'invoice_state' => 'numeric|exists:invoice_states,id',
         ];
     }
 }
