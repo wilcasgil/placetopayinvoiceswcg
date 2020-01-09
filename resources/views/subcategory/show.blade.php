@@ -20,6 +20,7 @@
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
+            
             <tbody>                
                 <tr>
                     <td>{{ $subcategory->id }}</td>

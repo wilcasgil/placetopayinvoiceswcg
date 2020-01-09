@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subcategory;
 use App\Category;
+
 use App\Http\Requests\Subcategory\StoreRequest;
 use App\Http\Requests\Subcategory\UpdateRequest;
 
