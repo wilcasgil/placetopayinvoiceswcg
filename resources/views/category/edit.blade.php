@@ -6,12 +6,14 @@
             <h1>Edit Category {{ $category->id }}</h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="/categories">Back</a>
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             @if($errors->any())
@@ -23,6 +25,7 @@
                     </ul>
                 </div>
             @endif
+            
             <form action="{{ route('categories.update', $category) }}" method="POST">
                 @csrf
                 @method('PATCH')

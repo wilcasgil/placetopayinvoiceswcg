@@ -5,8 +5,9 @@
         <div class="col">
             <h2>Category: {{ $category->name }}</h2>
         </div>
-    </div>        
+    </div>
     <br>
+
     <div class="table-responsive-lg">
         <h3>Details</h3>
         <table class="table table-hover table-sm">
@@ -18,6 +19,7 @@
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
+
             @foreach($category->subcategories as $subcategory)
             <tbody>                
                 <tr>
@@ -32,6 +34,7 @@
         </table>
     </div>
     <br>
+    
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('categories.index') }}">Back</a>

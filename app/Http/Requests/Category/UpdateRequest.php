@@ -24,7 +24,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => 'between:3,8|regex:/^[\pL\s\-]+$/u',
         ];
     }

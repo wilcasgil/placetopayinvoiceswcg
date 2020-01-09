@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>New Category</h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('categories.index') }}">Back</a>
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             @if($errors->any())
@@ -23,6 +25,7 @@
                     </ul>
                 </div>
             @endif
+
             <form action="{{ route('categories.store', $categories) }}" method="POST">
                 @csrf
                 <div class="form-group">

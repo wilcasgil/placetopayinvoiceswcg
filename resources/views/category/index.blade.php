@@ -22,6 +22,7 @@
                 <th>Action</th>
                 <th class="text-right"></th>
             </thead>
+            
             <tbody>
             @foreach($categories as $category)
                 <tr>
