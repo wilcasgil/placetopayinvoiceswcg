@@ -7,6 +7,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('subcategories.index') }}">Back</a>

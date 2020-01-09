@@ -24,7 +24,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
             'price' => 'numeric',
             'stock' => 'numeric',            
