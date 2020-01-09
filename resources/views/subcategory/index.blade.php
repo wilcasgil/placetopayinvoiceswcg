@@ -21,6 +21,7 @@
                 <th>Action</th>
                 <th class="text-right"></th>
             </thead>
+            
             <tbody>
             @foreach($subcategories as $subcategory)
                 <tr>

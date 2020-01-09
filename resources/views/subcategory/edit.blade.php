@@ -24,6 +24,7 @@
                     </ul>
                 </div>
             @endif
+            
             <form action="{{ route('subcategories.update', $subcategory) }}" method="POST">
                 @csrf
                 @method('PATCH')
