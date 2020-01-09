@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>Invoice States</h1>
         </div>
@@ -12,6 +12,7 @@
         </div>
     </div>
     <br>
+    
     <div class="row">
         <div class="col">
             <table class="table table-hover table-sm table-dark">
