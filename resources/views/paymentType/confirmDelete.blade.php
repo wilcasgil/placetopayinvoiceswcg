@@ -7,6 +7,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('paymentTypes.index') }}">Back</a>
@@ -36,8 +37,8 @@
             </tbody>
         </table>
     </div>
-
     <br>
+    
     <div class="row">
         <div class="col">
             <form action="/paymentTypes/{{ $paymentType->id }}" method="POST">

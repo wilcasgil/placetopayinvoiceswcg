@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PaymentType;
+
 use App\Http\Requests\PaymentType\StoreRequest;
 use App\Http\Requests\PaymentType\UpdateRequest;
 
