@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>Clients</h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-primary" href="{{ route('clients.create') }}">Create a new client</a>
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             <table class="table table-hover table-sm table-dark">
@@ -21,6 +23,7 @@
                     <th>Action</th>
                     <th>Action</th>
                 </thead>
+                
                 <tbody>
                 @foreach($clients as $client)
                     <tr>

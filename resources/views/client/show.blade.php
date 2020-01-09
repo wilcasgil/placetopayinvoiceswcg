@@ -7,27 +7,36 @@
         </div>
     </div>        
     <br>
+
     <div class="table-responsive-lg">
-        <h3>Details</h3>
+        <h3>Invoice Detail</h3>
         <table class="table table-hover table-sm">
             <thead>
-                <th>Id</th>
-                <th>Email</th>
+                <th>Due date</th>
+                <th>Receipt date</th>
+                <th>Payment Type</th>
+                <th>Invoice state</th>
                 <th>Created at</th>
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
-            <tbody>                
+
+            <tbody>
+            @foreach($client->invoices as $invoice)
                 <tr>
-                    <td>{{ $client->id }}</td>
-                    <td>{{ $client->email }}</td>
-                    <td>{{ $client->created_at }}</td>
-                    <td>{{ $client->updated_at }}</td>
+                    <td>{{ $invoice->due_date }}</td>
+                    <td>{{ $invoice->receipt_date }}</td>
+                    <td>{{ $invoice->paymentType->name }}</td>
+                    <td>{{ $invoice->invoiceState->name }}</td>
+                    <td>{{ $invoice->created_at }}</td>
+                    <td>{{ $invoice->updated_at }}</td>
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
     <br>
+    
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('clients.index') }}">Back</a>
