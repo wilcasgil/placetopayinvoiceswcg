@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+
 use App\Http\Requests\Client\StoreRequest;
 use App\Http\Requests\Client\UpdateRequest;
 

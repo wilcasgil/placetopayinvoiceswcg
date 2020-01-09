@@ -24,7 +24,6 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
             'last_name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
             'email' => 'required|email|max:90|unique:clients,email',            

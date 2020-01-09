@@ -7,6 +7,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('clients.index') }}">Back</a>
@@ -26,6 +27,7 @@
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
+
             <tbody>                
                 <tr>
                     <td>{{ $client->id }}</td>
@@ -36,8 +38,8 @@
             </tbody>
         </table>
     </div>
-
     <br>
+    
     <div class="row">
         <div class="col">
             <form action="/clients/{{ $client->id }}" method="POST">
