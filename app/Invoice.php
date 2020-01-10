@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends Model
 {
@@ -35,5 +36,10 @@ class Invoice extends Model
     public function invoiceState(): BelongsTo
     {
         return $this->belongsTo(InvoiceState::class);
+    }
+
+    public function details(): HasMany
+    {
+        return $this->hasMany(Detail::class);
     }
 }
