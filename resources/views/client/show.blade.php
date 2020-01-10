@@ -29,8 +29,8 @@
             <tbody>
             @foreach($client->invoices as $invoice)
                 <tr>
-                    <td>{{ $invoice->due_date }}</td>
-                    <td>{{ $invoice->receipt_date }}</td>
+                    <td>{{ date('F d, Y', strtotime($invoice->due_date)) }}</td>
+                    <td>{{ date('F d, Y', strtotime($invoice->receipt_date)) }}</td>
                     <td>{{ $invoice->paymentType->name }}</td>
                     <td>{{ $invoice->invoiceState->name }}</td>
                     <td>{{ $invoice->created_at }}</td>

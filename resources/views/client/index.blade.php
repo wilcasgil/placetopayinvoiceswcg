@@ -20,8 +20,7 @@
                 <thead>                
                     <th>Name</th>
                     <th>Last name</th>
-                    <th>Action</th>
-                    <th>Action</th>
+                    <th>Actions</th>
                 </thead>
                 
                 <tbody>
@@ -29,8 +28,10 @@
                     <tr>
                         <td><a href="{{ route('clients.show', $client) }}">{{ $client->name }}</a></td>                    
                         <td>{{ $client->last_name }}</td>
-                        <td><a href="{{ route('clients.edit', $client) }}">Edit</a></td>
-                        <td><a href="/clients/{{ $client->id }}/confirmDelete">Delete</a></td>
+                        <td>
+                            <a href="{{ route('clients.edit', $client) }}">Edit</a>
+                            <a href="/clients/{{ $client->id }}/confirmDelete">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -21,16 +21,17 @@
         <table class="table table-hover table-sm table-dark">
             <thead>
                 <th>Id</th>
-                <th>Action</th>
-                <th>Action</th>
+                <th>Actions</th>
                 <th class="text-right"></th>
             </thead>
             <tbody>
             @foreach($invoices as $invoice)
                 <tr>
                     <td><a href="{{ route('invoices.show', $invoice) }}">{{ $invoice->id }}</a></td>
-                    <td><a href="{{ route('invoices.edit', $invoice) }}">Edit</a></td>
-                    <td><a href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a></td>
+                    <td>
+                        <a href="{{ route('invoices.edit', $invoice) }}">Edit</a>
+                        <a href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

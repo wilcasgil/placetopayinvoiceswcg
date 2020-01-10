@@ -20,8 +20,7 @@
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
-            
-            <tbody>                
+            <tbody>
                 <tr>
                     <td>{{ $subcategory->id }}</td>
                     <td>{{ $subcategory->price }}</td>

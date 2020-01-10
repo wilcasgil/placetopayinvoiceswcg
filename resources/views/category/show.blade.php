@@ -26,8 +26,8 @@
                     <td><a href="{{ route('subcategories.show', $subcategory) }}">{{ $subcategory->name }}</a></td>
                     <td>{{ $subcategory->price }}</td>
                     <td>{{ $subcategory->stock }}</td>
-                    <td>{{ $subcategory->created_at }}</td>
-                    <td>{{ $subcategory->updated_at }}</td>
+                    <td>{{ date('F d, Y', strtotime($subcategory->created_at)) }}</td>
+                    <td>{{ date('F d, Y', strtotime($subcategory->updated_at)) }}</td>
                 </tr>
             </tbody>
             @endforeach

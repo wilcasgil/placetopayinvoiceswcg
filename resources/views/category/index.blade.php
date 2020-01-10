@@ -18,17 +18,17 @@
         <table class="table table-hover table-sm table-dark">
             <thead>                
                 <th>Name</th>
-                <th>Action</th>
-                <th>Action</th>
+                <th>Actions</th>
                 <th class="text-right"></th>
-            </thead>
-            
+            </thead>            
             <tbody>
             @foreach($categories as $category)
                 <tr>
                     <td><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></td>
-                    <td><a href="{{ route('categories.edit', $category) }}">Edit</a></td>
-                    <td><a href="/categories/{{ $category->id }}/confirmDelete">Delete</a></td>
+                    <td>
+                        <a href="{{ route('categories.edit', $category) }}">Edit</a>
+                        <a href="/categories/{{ $category->id }}/confirmDelete">Delete</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
