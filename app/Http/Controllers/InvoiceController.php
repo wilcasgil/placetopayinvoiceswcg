@@ -6,6 +6,7 @@ use App\Client;
 use App\Invoice;
 use App\InvoiceState;
 use App\PaymentType;
+use App\Subcategory;
 
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
@@ -35,7 +36,9 @@ class InvoiceController extends Controller
         $clients = Client::all();
         $invoiceStates = InvoiceState::all();
 
-        return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates'));
+        $subcategories = Subcategory::all();
+
+        return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories', 'details'));
     }
 
     /**
