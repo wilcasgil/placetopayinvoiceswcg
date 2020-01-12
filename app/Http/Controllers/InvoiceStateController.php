@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\InvoiceState;
+
 use App\Http\Requests\InvoiceState\StoreRequest;
 use App\Http\Requests\InvoiceState\UpdateRequest;
 

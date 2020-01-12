@@ -7,6 +7,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('categories.index') }}">Back</a>
@@ -25,6 +26,7 @@
                 <th>Updated at</th>
                 <th class="text-right"></th>
             </thead>
+
             <tbody>                
                 <tr>
                     <td>{{ $category->id }}</td>
@@ -34,8 +36,8 @@
             </tbody>
         </table>
     </div>
-
     <br>
+    
     <div class="row">
         <div class="col">
             <form action="/categories/{{ $category->id }}" method="POST">

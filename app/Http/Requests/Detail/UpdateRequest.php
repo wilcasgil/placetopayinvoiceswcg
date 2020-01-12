@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Detail;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,9 +24,13 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
-            'last_name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
-            'email' => 'email|max:90',
+            'quantity' => 'numeric',
+            'price' => 'numeric',
+            'subtotal' => 'numeric',
+            'iva' => 'numeric',
+            'total' => 'numeric',
+            'invoice' => 'numeric|exists:invoices,id',
+            'subcategory' => 'numeric|exists:subcategories,id',
         ];
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col">
             <h1>New Invoice State</h1>
         </div>
@@ -12,6 +12,7 @@
         </div>
     </div>
     <br>
+
     <div class="row">
         <div class="col">
             @if($errors->any())
@@ -23,6 +24,7 @@
                     </ul>
                 </div>
             @endif
+            
             <form action="{{ route('invoiceStates.store', $invoiceStates) }}" method="POST">
                 @csrf
                 <div class="form-group">

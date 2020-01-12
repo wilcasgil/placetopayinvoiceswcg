@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Detail;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,9 +24,13 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
-            'last_name' => 'required|between:3,100|regex:/^[\pL\s\-]+$/u|unique:clients',
-            'email' => 'required|email|max:90|unique:clients,email',            
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
+            'subtotal' => 'required|numeric',
+            'iva' => 'required|numeric',
+            'total' => 'required|numeric',
+            'invoice' => 'numeric|exists:invoices,id',
+            'subcategory' => 'numeric|exists:subcategories,id',
         ];
     }
 }
