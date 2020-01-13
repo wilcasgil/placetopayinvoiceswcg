@@ -32,19 +32,19 @@
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label for="client_id">Client</label>
-                                <select class="form-control" id="client_id" name="client_id" required>
+                                <select class="form-control" id="client_id" name="client_id" required autofocus="">
                                     <option value="">Please select a client</option>
                                     @foreach ($clients as $client)
                                         <option value="{{ $client->id }}">{{ $client->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div>                        
 
                         <div class="col-xs-2">
                             <div class="form-group">
                                 <label for="last_name">Last Name:</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a last name" value="{{ $client->last_name }}" required>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a last name" value="" required>
                             </div>
                         </div>
 
@@ -200,116 +200,35 @@
     <!-- <button if={detail.length > 0 && client_id > 0} onclick={__save} class="btn btn-default btn-lg btn-block">
         Guardar
     </button> -->
-
     <script>
-        var self = this;
+        var client = $("#last_name"),
+        options = {
+            url: function(c) {
+                return baseUrl('invoices/findClient?c=' + c);
+            },
 
-        // Invoice details
-        self.client_id = 0;
-        self.detail = [];
-        self.iva = 0;
-        self.subTotal = 0;
-        self.total = 0;
+            getValue: "last_name"
+        };
 
-        self.on('mount', function(){
-            __clientAutocomplete();
-            __productAutocomplete();
-        })
+        $("#last_name").easyAutocomplete(options);
 
-        __removeProductFromDetail(e) {
-            var item = e.item,
-                index = this.detail.indexOf(item);
+        // function estafuncion(inputSelect){
+        //     var valor = inputSelect.value;
+        //     document.getElementById("last_name").value="{{ $client->last_name }}";
+        // }
 
-            this.detail.splice(index, 1);
-            __calculate();
-        }
+        // var self = this;
 
-        __addProductToDetail() {
-            self.detail.push({
-                id: self.product_id,
-                name: self.product.value,
-                quantity: parseFloat(self.quantity.value),
-                price: parseFloat(self.price),
-                total: parseFloat(self.price * self.quantity.value)
-            });
+        // self.on('mount', function(){
+        //     clientAutocomplete();
+        // })
 
-            self.product_id = 0;
-            self.product.value = '';
-            self.quantity.value = '';
-            self.price = '';
+        // function __clientAutocomplete(){
+        //     var options = {
+        //         data: ["blue", "green", "pink", "red", "yellow"]
+        //     };
 
-            __calculate();
-        }
-
-        __save() {
-            $.post(baseUrl('invoice/save'), {
-                client_id: self.client_id,
-                iva: self.iva,
-                subTotal: self.subTotal,
-                total: self.total,
-                detail: self.detail
-            }, function(r){
-                if(r.response) {
-                    window.location.href = baseUrl('invoice');
-                } else {
-                    alert('Ocurrio un error');
-                }
-            }, 'json')
-        }
-
-        function __calculate() {
-            var total = 0;
-
-            self.detail.forEach(function(e){
-                total += e.total;
-            });
-
-            self.total = total;
-            self.subTotal = parseFloat(total / 1.18);
-            self.iva = parseFloat(total - self.subTotal);
-        }
-
-        function __clientAutocomplete(){
-            var client = $("#client"),
-                options = {
-                url: function(q) {
-                    return baseUrl('invoice/findClient?q=' + q);
-                },
-                getValue: 'name',
-                list: {
-                    onClickEvent: function() {
-                        var e = client.getSelectedItemData();
-                        self.client_id = e.id;
-                        self.ruc = e.ruc;
-                        self.address = e.address;
-
-                        self.update();
-                    }
-                }
-            };
-
-            client.easyAutocomplete(options);
-        }
-
-        function __productAutocomplete(){
-            var product = $("#product"),
-                options = {
-                url: function(q) {
-                    return baseUrl('invoice/findProduct?q=' + q);
-                },
-                getValue: 'name',
-                list: {
-                    onClickEvent: function() {
-                        var e = product.getSelectedItemData();
-                        self.product_id = e.id;
-                        self.price = e.price;
-
-                        self.update();
-                    }
-                }
-            };
-
-            product.easyAutocomplete(options);
-        }
+        //     $("#last_name").easyAutocomplete(options);
+        // }
     </script>
 @endsection
