@@ -44,7 +44,7 @@
                         <div class="col-xs-2">
                             <div class="form-group">
                                 <label for="last_name">Last Name:</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a last name" value="{{ $client->last_name }}" required>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a last name" value="{{ old('last_name') }}" required>
                             </div>
                         </div>
 
@@ -175,7 +175,7 @@
                     <button onclick={__removeProductFromDetail} class="btn btn-danger btn-xs btn-block">X</button>
                 </td> -->
                 <th style="width:40px;"></th>
-                <td>{{ $subcategory->name }}</td>
+                <td>Subcategori name</td>
                 <td class="text-right">0</td>
                 <td class="text-right">$ 000.00</td>
                 <td class="text-right">$ 000.00</td>

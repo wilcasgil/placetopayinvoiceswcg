@@ -38,7 +38,7 @@ class InvoiceController extends Controller
 
         $subcategories = Subcategory::all();
 
-        return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories', 'details'));
+        return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories'));
     }
 
     /**
