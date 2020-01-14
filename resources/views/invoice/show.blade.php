@@ -9,28 +9,22 @@
     <br>
     
     <div class="table-responsive-lg">
-        <h3>Details</h3>
+        <h3>Item Details</h3>
         <table class="table table-hover table-sm">
             <thead>
-                <th>Due Date</th>
-                <th>Receipt Date</th>
-                <th>Payment Type</th>
-                <th>Client</th>
-                <th>Invoice State</th>
-                <th>Created at</th>
-                <th>Updated at</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
                 <th class="text-right"></th>
-            </thead>
-            <tbody>                
+            </thead>            
+            <tbody>
+            @foreach($invoice->details as $detail)
                 <tr>
-                    <td>{{ date('F d, Y', strtotime($invoice->due_date)) }}</td>
-                    <td>{{ date('F d, Y', strtotime($invoice->receipt_date)) }}</td>
-                    <td>{{ $invoice->paymentType->name }}</td>
-                    <td>{{ $invoice->client->name }} {{ $invoice->client->last_name }}</td>
-                    <td>{{ $invoice->invoiceState->name }}</td>
-                    <td>{{ $invoice->created_at }}</td>
-                    <td>{{ $invoice->updated_at }}</td>
+                    <td>{{ $detail->subcategory->name }}</td>
+                    <td>{{ $detail->quantity }}</td>
+                    <td>{{ $detail->price }}</td>
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
@@ -40,9 +34,11 @@
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('invoices.index') }}">Back</a>
 
-            <a class="btn btn-secondary" href="{{ route('invoices.edit', $invoice) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ route('details.create', $detail ?? '') }}">Add</a>
 
-            <a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a>
+            <!-- <a class="btn btn-secondary" href="{{ route('invoices.edit', $invoice) }}">Edit</a>
+
+            <a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a> -->
         </div>
     </div>
 @endsection

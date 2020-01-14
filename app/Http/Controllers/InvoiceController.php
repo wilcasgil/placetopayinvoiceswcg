@@ -38,6 +38,10 @@ class InvoiceController extends Controller
 
         $subcategories = Subcategory::all();
 
+        //$dataClient = Client::where('client_id', $clients->id);
+
+        //$dataClient = Client::find($id);
+       
         return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories'));
     }
 
@@ -136,4 +140,11 @@ class InvoiceController extends Controller
 
         return response()->view('invoice.confirmDelete', compact('invoice'));
     }
+
+    // public function dataByClient($id)
+    // {
+    //     $dataClient = Client::find($id);
+    //     //Client::where('client','=',$id)->get();
+    //     return view('invoice.create', ['invoice' => $dataClient]);
+    // }
 }
