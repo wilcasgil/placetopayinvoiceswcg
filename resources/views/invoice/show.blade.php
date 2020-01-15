@@ -55,7 +55,11 @@
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('invoices.index') }}">Back</a>
 
-            <a class="btn btn-primary" href="{{ route('details.create', $detail) }}">Add</a>
+            <a class="btn btn-primary" href="{{ route('details.create', $detail ?? '') }}">Add</a>
         </div>
     </div>
+
+    <script>
+        
+    </script>
 @endsection
