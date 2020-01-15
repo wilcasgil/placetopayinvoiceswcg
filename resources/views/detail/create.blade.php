@@ -55,6 +55,18 @@
                             </div>
                         </div>
 
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="invoice_id">Invoice</label>
+                                <select class="form-control" id="invoice_id" name="invoice_id" required>
+                                    <option value="">Please select a invoice</option>
+                                        @foreach ($invoices as $invoice)
+                                            <option value="{{ $invoice->id }}">{{ $invoice->id }}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- <div class="form-group">
                             <label for="subtotal">Subtotal:</label>
                             <input type="text" class="form-control" id="subtotal" name="subtotal" placeholder="Type a subtotal" value="{{ old('subtotal') }}" required>

@@ -26,9 +26,9 @@ class StoreRequest extends FormRequest
         return [
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
-            'subtotal' => 'required|numeric',
-            'iva' => 'required|numeric',
-            'total' => 'required|numeric',
+            // 'subtotal' => 'required|numeric',
+            // 'iva' => 'required|numeric',
+            // 'total' => 'required|numeric',
             'invoice' => 'numeric|exists:invoices,id',
             'subcategory' => 'numeric|exists:subcategories,id',
         ];
