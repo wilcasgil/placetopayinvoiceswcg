@@ -26,9 +26,9 @@ class UpdateRequest extends FormRequest
         return [
             'quantity' => 'numeric',
             'price' => 'numeric',
-            'subtotal' => 'numeric',
-            'iva' => 'numeric',
-            'total' => 'numeric',
+            // 'subtotal' => 'numeric',
+            // 'iva' => 'numeric',
+            // 'total' => 'numeric',
             'invoice' => 'numeric|exists:invoices,id',
             'subcategory' => 'numeric|exists:subcategories,id',
         ];
