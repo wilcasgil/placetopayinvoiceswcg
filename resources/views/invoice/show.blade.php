@@ -34,7 +34,7 @@
             <tbody>
             @foreach($invoice->details as $detail)
                 <tr>
-                    <td>{{ $detail->subcategory->name }}</td>
+                    <td><a href="{{ route('details.show', $detail) }}">{{ $detail->subcategory->name }}</a></td>
                     <td>{{ $detail->quantity }}</td>
                     <td>{{ $detail->price }}</td>
                     <td>{{ $detail->subtotal }}</td>
