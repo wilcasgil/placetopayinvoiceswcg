@@ -9,6 +9,8 @@ use App\Subcategory;
 use App\Http\Requests\Detail\StoreRequest;
 use App\Http\Requests\Detail\UpdateRequest;
 
+use Illuminate\Support\Facades\Config;
+
 class DetailController extends Controller
 {
     /**
@@ -49,7 +51,9 @@ class DetailController extends Controller
         $detail->subcategory_id = $request->input('subcategory_id');
 
         $detail->subtotal = $detail->quantity * $detail->price;
-        $detail->total = $detail->subtotal + $detail->subtotal;
+
+        $iva = Config::get('constant.IVA');
+        $detail->iva = $detail->subtotal * $iva;
 
         $detail->save();
 
@@ -62,9 +66,9 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Detail $detail)
     {
-        //
+        return response()->view('detail.show', compact('detail'));
     }
 
     /**
@@ -95,9 +99,14 @@ class DetailController extends Controller
         $detail->invoice_id = $request->input('invoice_id');
         $detail->subcategory_id = $request->input('subcategory_id');
 
+        $detail->subtotal = $detail->quantity * $detail->price;
+
+        $iva = Config::get('constant.IVA');
+        $detail->iva = $detail->subtotal * $iva;
+
         $detail->save();
 
-        return redirect()->route('details.create');
+        return redirect()->route('invoices.index');
     }
 
     /**
@@ -108,6 +117,17 @@ class DetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $detail = Detail::findOrFail($id);
+
+        $detail->delete();
+
+        return redirect()->route('invoice.index');
+    }
+
+    public function confirmDelete($id)
+    {
+        $detail = Detail::findOrFail($id);
+
+        return response()->view('detail.confirmDelete', compact('detail'));
     }
 }
