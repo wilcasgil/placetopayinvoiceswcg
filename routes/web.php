@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function (){
 
     Route::resource('invoices', 'InvoiceController');
     Route::get('invoices/{id}/confirmDelete', 'InvoiceController@confirmDelete');
+    //Route::get('invoices/{id}', 'InvoiceController@show');
 
     Route::resource('details', 'DetailController');
     Route::get('details/{id}/confirmDelete', 'DetailController@confirmDelete');
