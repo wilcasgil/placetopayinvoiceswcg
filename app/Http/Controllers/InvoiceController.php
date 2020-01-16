@@ -10,7 +10,6 @@ use App\Subcategory;
 
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
-use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -37,13 +36,6 @@ class InvoiceController extends Controller
         $clients = Client::all();
         $invoiceStates = InvoiceState::all();
         $subcategories = Subcategory::all();
-        
-        //$client = Client::findOrFail($clients);
-        //$client = Client::where("id","=",$clients)->get()->toArray();        
-
-        //$dataClient = Client::where('client_id', $clients->id);
-
-        //$dataClient = Client::find($id);
        
         return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories'));
     }
@@ -143,11 +135,4 @@ class InvoiceController extends Controller
 
         return response()->view('invoice.confirmDelete', compact('invoice'));
     }
-
-    // public function dataByClient($id)
-    // {
-    //     $dataClient = Client::find($id);
-    //     //Client::where('client','=',$id)->get();
-    //     return view('invoice.create', ['invoice' => $dataClient]);
-    // }
 }

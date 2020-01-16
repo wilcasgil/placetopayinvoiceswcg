@@ -9,6 +9,8 @@ use App\Subcategory;
 use App\Http\Requests\Detail\StoreRequest;
 use App\Http\Requests\Detail\UpdateRequest;
 
+use Illuminate\Support\Facades\Config;
+
 class DetailController extends Controller
 {
     /**
@@ -49,7 +51,9 @@ class DetailController extends Controller
         $detail->subcategory_id = $request->input('subcategory_id');
 
         $detail->subtotal = $detail->quantity * $detail->price;
-        $detail->total = $detail->subtotal + $detail->subtotal;
+
+        $iva = Config::get('constant.IVA');
+        $detail->iva = $detail->subtotal * $iva;
 
         $detail->save();
 
