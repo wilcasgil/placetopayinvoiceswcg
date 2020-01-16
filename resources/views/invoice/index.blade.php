@@ -20,7 +20,7 @@
     <div class="table-responsive-lg">
         <table class="table table-hover table-sm table-dark">
             <thead>
-                <th>Invoice number</th>
+                <th>Number</th>
                 <th>Client</th>
                 <th>Created at</th>
                 <th>Due Date</th>
@@ -34,9 +34,9 @@
                 <tr>
                     <td><a href="{{ route('invoices.show', $invoice) }}">{{ $invoice->id }}</a></td>
                     <td>{{ $invoice->client->name }} {{ $invoice->client->last_name }}</td>
-                    <td>{{ $invoice->created_at }}</td>
+                    <td>{{ date('F d, Y', strtotime($invoice->created_at)) }}</td>
                     <td>{{ date('F d, Y', strtotime($invoice->due_date)) }}</td>
-                    <td>{{ $invoice->invoiceState->name }}</td>
+                    <td><a href="/invoices/{{ $invoice->id }}/editState">{{ $invoice->invoiceState->name }}</a></td>
                     <td>{{ $invoice->paymentType->name }}</td>
                     <td>
                         <a href="{{ route('invoices.edit', $invoice) }}">Edit</a>
