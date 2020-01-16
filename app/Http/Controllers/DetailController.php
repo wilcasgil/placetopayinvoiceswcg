@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-// use App\Invoice;
-// use App\Subcategory;
-use Illuminate\Http\Request;
+use App\Detail;
+use App\Invoice;
+use App\Subcategory;
+
+use App\Http\Requests\Detail\StoreRequest;
+use App\Http\Requests\Detail\UpdateRequest;
 
 class DetailController extends Controller
 {
@@ -25,21 +28,32 @@ class DetailController extends Controller
      */
     public function create()
     {
-        // $invoices = Invoice::all();
-        // $subcategories = Subcategory::all();
+        $invoices = Invoice::all();
+        $subcategories = Subcategory::all();
 
-        // return response()->view('invoice.create', compact('invoices', 'subcategories'));
+        return response()->view('detail.create', compact('invoices', 'subcategories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $detail = new Detail;
+        $detail->quantity = $request->input('quantity');
+        $detail->price = $request->input('price');
+        $detail->invoice_id = $request->input('invoice_id');
+        $detail->subcategory_id = $request->input('subcategory_id');
+
+        $detail->subtotal = $detail->quantity * $detail->price;
+        $detail->total = $detail->subtotal + $detail->subtotal;
+
+        $detail->save();
+
+        return redirect()->route('details.create');
     }
 
     /**
@@ -59,9 +73,12 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Detail $detail)
     {
-        //
+        $invoices = Invoice::all();
+        $subcategories = Subcategory::all();
+
+        return response()->view('detail.edit', compact('detail', 'invoices', 'subcategories'));
     }
 
     /**
@@ -71,9 +88,16 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Detail $detail)
     {
-        //
+        $detail->quantity = $request->input('quantity');
+        $detail->price = $request->input('price');
+        $detail->invoice_id = $request->input('invoice_id');
+        $detail->subcategory_id = $request->input('subcategory_id');
+
+        $detail->save();
+
+        return redirect()->route('details.create');
     }
 
     /**

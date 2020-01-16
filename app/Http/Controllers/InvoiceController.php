@@ -41,7 +41,11 @@ class InvoiceController extends Controller
         //$client = Client::findOrFail($clients);
         //$client = Client::where("id","=",$clients)->get()->toArray();        
 
-        return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories', 'details'));
+        //$dataClient = Client::where('client_id', $clients->id);
+
+        //$dataClient = Client::find($id);
+       
+        return response()->view('invoice.create', compact('paymentTypes', 'clients', 'invoiceStates', 'subcategories'));
     }
 
     /**
@@ -140,10 +144,10 @@ class InvoiceController extends Controller
         return response()->view('invoice.confirmDelete', compact('invoice'));
     }
 
-    private $client;
-    public function findClient(Request $request)
-    {
-        $this->client = new Client;
-        return $this->client->findByLastName($request->input('c'));
-    }
+    // public function dataByClient($id)
+    // {
+    //     $dataClient = Client::find($id);
+    //     //Client::where('client','=',$id)->get();
+    //     return view('invoice.create', ['invoice' => $dataClient]);
+    // }
 }
