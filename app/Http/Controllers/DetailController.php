@@ -48,6 +48,9 @@ class DetailController extends Controller
         $detail->invoice_id = $request->input('invoice_id');
         $detail->subcategory_id = $request->input('subcategory_id');
 
+        $detail->subtotal = $detail->quantity * $detail->price;
+        $detail->total = $detail->subtotal + $detail->subtotal;
+
         $detail->save();
 
         return redirect()->route('details.create');

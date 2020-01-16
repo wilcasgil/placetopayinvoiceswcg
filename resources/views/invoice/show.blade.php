@@ -33,18 +33,18 @@
                 </tr>
             @endforeach
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4" class="text-right"><b>IVA</b></td>
-                    <td class="text-right">$ {iva.toFixed(2)}</td>
-                </tr>
+            <tfoot>                
                 <tr>
                     <td colspan="4" class="text-right"><b>Sub Total</b></td>
                     <td class="text-right">${subTotal.toFixed(2)}</td>
                 </tr>
                 <tr>
+                    <td colspan="4" class="text-right"><b>IVA</b></td>
+                    <td class="text-right">$ {iva.toFixed(2)}</td>
+                </tr>
+                <tr>
                     <td colspan="4" class="text-right"><b>Total</b></td>
-                    <td class="text-right">$ {total.toFixed(2)}</td>
+                    <td class="text-right">$ {{ $detail->total }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -55,7 +55,11 @@
         <div class="col">
             <a class="btn btn-secondary" href="{{ route('invoices.index') }}">Back</a>
 
-            <a class="btn btn-primary" href="{{ route('details.create', $detail) }}">Add</a>
+            <a class="btn btn-primary" href="{{ route('details.create', $detail ?? '') }}">Add</a>
         </div>
     </div>
+
+    <script>
+        
+    </script>
 @endsection
