@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="{{ route('details.create') }}">Back</a>
+            <a class="btn btn-secondary" href="{{ route('invoices.index') }}">Back</a>
         </div>
     </div>
     <br>

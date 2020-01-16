@@ -16,4 +16,9 @@ class Client extends Model
     {
         return $this->hasMany(Invoice::class);
     }
+
+    public function findByLastName($c)
+    {
+        return $this->where('last_name', 'like', "%$c%")->get();
+    }
 }
