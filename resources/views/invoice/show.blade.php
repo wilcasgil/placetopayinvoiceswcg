@@ -9,7 +9,18 @@
     <br>
     
     <div class="table-responsive-lg">
-        <h3>Item Details</h3>
+        <div class="row">
+            <div class="col">
+                <h3>Item Details</h3>
+            </div>
+            <div class="col">
+                <a class="btn btn-secondary" href="{{ route('invoices.index') }}">Back</a>
+
+                <a class="btn btn-primary" href="{{ route('details.create', $detail ?? '') }}">Add</a>
+            </div>
+        </div>
+        <br>
+        
         <table class="table table-hover table-sm">
             <thead>
                 <th>Item Name</th>
@@ -40,17 +51,4 @@
             </tfoot>
         </table>
     </div>
-    <br>
-
-    <div class="row">
-        <div class="col">
-            <a class="btn btn-secondary" href="{{ route('invoices.index') }}">Back</a>
-
-            <a class="btn btn-primary" href="{{ route('details.create', $detail ?? '') }}">Add</a>
-        </div>
-    </div>
-
-    <script>
-        
-    </script>
 @endsection

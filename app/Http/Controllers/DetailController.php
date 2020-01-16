@@ -99,9 +99,14 @@ class DetailController extends Controller
         $detail->invoice_id = $request->input('invoice_id');
         $detail->subcategory_id = $request->input('subcategory_id');
 
+        $detail->subtotal = $detail->quantity * $detail->price;
+
+        $iva = Config::get('constant.IVA');
+        $detail->iva = $detail->subtotal * $iva;
+
         $detail->save();
 
-        return redirect()->route('details.create');
+        return redirect()->route('invoices.index');
     }
 
     /**
@@ -112,6 +117,17 @@ class DetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $detail = Detail::findOrFail($id);
+
+        $detail->delete();
+
+        return redirect()->route('invoice.index');
+    }
+
+    public function confirmDelete($id)
+    {
+        $detail = Detail::findOrFail($id);
+
+        return response()->view('detail.confirmDelete', compact('detail'));
     }
 }

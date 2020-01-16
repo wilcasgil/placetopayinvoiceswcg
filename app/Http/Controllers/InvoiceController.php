@@ -7,9 +7,12 @@ use App\Invoice;
 use App\InvoiceState;
 use App\PaymentType;
 use App\Subcategory;
+use App\Detail;
 
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
+
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -69,6 +72,8 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
+        //$details = Detail::with(['invoice'])->paginate();
+        //$details = DB::table('details')->simplePaginate(10);
         return response()->view('invoice.show', compact('invoice'));
     }
 
