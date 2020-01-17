@@ -101,11 +101,16 @@ class InvoiceController extends Controller
      */
     public function update(UpdateRequest $request, Invoice $invoice)
     {
-        $invoice->due_date = $request->input('due_date');
-        $invoice->receipt_date = $request->input('receipt_date');
-        $invoice->payment_type_id = $request->input('payment_type_id');
-        $invoice->client_id = $request->input('client_id');
-        $invoice->invoice_state_id = $request->input('invoice_state_id');
+        if ($invoice->editState())
+        {
+            $invoice->invoice_state_id = $request->input('invoice_state_id');
+        } else {
+            $invoice->due_date = $request->input('due_date');
+            $invoice->receipt_date = $request->input('receipt_date');
+            $invoice->payment_type_id = $request->input('payment_type_id');
+            $invoice->client_id = $request->input('client_id');
+            $invoice->invoice_state_id = $request->input('invoice_state_id');
+        }
 
         $invoice->save();
 
@@ -141,28 +146,23 @@ class InvoiceController extends Controller
         return response()->view('invoice.confirmDelete', compact('invoice'));
     }
 
-    public function updateState(Request $request, $id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        // $invoice->due_date = $request->input('due_date');
-        // $invoice->receipt_date = $request->input('receipt_date');
-        // $invoice->payment_type_id = $request->input('payment_type_id');
-        // $invoice->client_id = $request->input('client_id');
-
-        $invoice->where('id',$request[$id])
-       ->update(['invoice_state-id'=>$request['invoice_state_id']]);
-        //$invoice->invoice_state_id = $request->input('invoice_state_id');
-
-        $invoice->save();
-
-        return redirect()->route('invoices.index');
-    }
-
     public function editState($id)
     {
         $invoice = Invoice::findOrFail($id);
+        
         $invoiceStates = InvoiceState::all();
 
         return response()->view('invoice.editState', compact('invoice', 'invoiceStates'));
     }
+
+    // public function updateState(UpdateRequest $request, Invoice $invoice)
+    // {
+    //     //dd($request->all());
+        
+    //     $invoice->invoice_state_id = $request->input('invoice_state_id');
+
+    //     $invoice->save();
+
+    //     return redirect()->route('invoices.index');
+    // }
 }
