@@ -155,14 +155,17 @@ class InvoiceController extends Controller
         return response()->view('invoice.editState', compact('invoice', 'invoiceStates'));
     }
 
-    // public function updateState(UpdateRequest $request, Invoice $invoice)
-    // {
-    //     //dd($request->all());
-        
-    //     $invoice->invoice_state_id = $request->input('invoice_state_id');
+    public function updateState(UpdateRequest $request, Invoice $invoice)
+    {
+        // $invoice->due_date = $request;
+        // $invoice->receipt_date = $request;
+        // $invoice->payment_type_id = $request;
+        // $invoice->client_id = $request;
 
-    //     $invoice->save();
+        $invoice->invoice_state_id = $request->input('invoice_state_id');
 
-    //     return redirect()->route('invoices.index');
-    // }
+        $invoice->save();
+
+        return redirect()->route('invoices.index');
+    }
 }
