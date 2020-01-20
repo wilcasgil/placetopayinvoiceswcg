@@ -14,7 +14,8 @@ class CreateInvoiceStatesTable extends Migration
     public function up()
     {
         Schema::create('invoice_states', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
+            //$table->increments('id');
             $table->string('name', 30)->unique();
             $table->boolean('active')->default(1);
             $table->timestamps();

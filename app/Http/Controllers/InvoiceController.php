@@ -101,16 +101,19 @@ class InvoiceController extends Controller
      */
     public function update(UpdateRequest $request, Invoice $invoice)
     {
-        if ($invoice->editState())
-        {
+        
+        // if ($invoice->editState())
+        // {
+        //     $invoice->invoice_state_id = $request->input('invoice_state_id');
+        // } else {
+            // $invoice->due_date = $request->input('due_date');
+            // $invoice->receipt_date = $request->input('receipt_date');
+            // $invoice->payment_type_id = $request->input('payment_type_id');
+            // $invoice->client_id = $request->input('client_id');
             $invoice->invoice_state_id = $request->input('invoice_state_id');
-        } else {
-            $invoice->due_date = $request->input('due_date');
-            $invoice->receipt_date = $request->input('receipt_date');
-            $invoice->payment_type_id = $request->input('payment_type_id');
-            $invoice->client_id = $request->input('client_id');
-            $invoice->invoice_state_id = $request->input('invoice_state_id');
-        }
+        // }
+
+        dd($request);        
 
         $invoice->save();
 
@@ -155,17 +158,17 @@ class InvoiceController extends Controller
         return response()->view('invoice.editState', compact('invoice', 'invoiceStates'));
     }
 
-    public function updateState(UpdateRequest $request, Invoice $invoice)
-    {
-        // $invoice->due_date = $request;
-        // $invoice->receipt_date = $request;
-        // $invoice->payment_type_id = $request;
-        // $invoice->client_id = $request;
+    // public function updateState(UpdateRequest $request, Invoice $invoice)
+    // {
+    //     // $invoice->due_date = $request;
+    //     // $invoice->receipt_date = $request;
+    //     // $invoice->payment_type_id = $request;
+    //     // $invoice->client_id = $request;
 
-        $invoice->invoice_state_id = $request->input('invoice_state_id');
+    //     $invoice->invoice_state_id = $request->input('invoice_state_id');
 
-        $invoice->save();
+    //     $invoice->save();
 
-        return redirect()->route('invoices.index');
-    }
+    //     return redirect()->route('invoices.index');
+    // }
 }
