@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('invoices.update', $invoice) }}" method="POST">
+            <form action="{{ route('invoices.updateState', $invoice) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 
