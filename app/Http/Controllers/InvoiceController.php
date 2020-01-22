@@ -99,8 +99,7 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Invoice $invoice)
-    {
-        
+    {        
         // if(request('invoice_state_id') !== $invoice->invoice_state_id) {
         //     $invoice->invoice_state_id = $request->input('invoice_state_id');
         // } else {
@@ -158,28 +157,32 @@ class InvoiceController extends Controller
 
     public function updateState(UpdateRequest $request, Invoice $invoice)
     {
+        //$invoice->invoice_state_id = $request->input('invoice_state_id');
+
+        //dd($request);
+        //$invoice->save();
+
+        $sql = DB::update('update invoices SET invoice_state_id=' .$request->invoice_state_id. ' WHERE id='.$invoice->id);
+
+        //$invoice = Invoice::findOrFail($request->id);
         //$invoice = Invoice::findOrFail($invoice)->first();
-
+        //return $invoice;
+        
         //if ($request->get('invoice_state_id') != $invoice->invoice_state_id) {
-        if (request('invoice_state_id') != $invoice->invoice_state_id) {
+        //if (request('invoice_state_id') != $invoice->invoice_state_id) {
 
-            $invoice->invoice_state_id = $request->get('invoice_state_id');
+            //$invoice->invoice_state_id = $request->invoice_state_id;           
 
-            $invoice->save();
-        }
+            //$invoice->save();
+        //}
         // else {
         //     $invoice->due_date = $request->input('due_date');
         //     $invoice->payment_type_id = $request->input('payment_type_id');
         //     $invoice->client_id = $request->input('client_id');
         //     $invoice->invoice_state_id = $request->input('invoice_state_id');
-        // }
+        // }        
         
-        //$invoice->invoice_state_id = $request->input('invoice_state_id');
         //$invoice->fill(['invoice_state_id' => $request->input('invoice_state_id')])->save();
-        
-
-        //dd($request);
-        //$invoice->save();
 
         return redirect()->route('invoices.index');
     }
