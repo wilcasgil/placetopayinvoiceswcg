@@ -25,7 +25,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'due_date' => 'required|date',
-            'receipt_date' => 'required|date',
             'payment_type' => 'numeric|exists:payment_types,id',
             'client' => 'numeric|exists:clients,id',
             'invoice_state' => 'numeric|exists:invoice_states,id',

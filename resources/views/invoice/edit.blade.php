@@ -36,11 +36,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="receipt_date">Receipt Date:</label>
-                    <input type="date" class="form-control" id="receipt_date" name="receipt_date" placeholder="Type a receipt date" value="{{ $invoice->receipt_date }}" required>
-                </div>
-
-                <div class="form-group">
                     <label for="payment_type_id">Payment Type</label>
                     <select class="form-control" id="payment_type_id" name="payment_type_id" required>
                         <option value="">Please select a payment type</option>

@@ -43,7 +43,7 @@ class Invoice extends Model
         return $this->hasMany(Detail::class);
     }
 
-    protected $fillable = ['invoice_state_id'];
+    //protected $fillable = ['invoice_state_id'];
 
     // protected static function boot() {
     //     parent::boot();

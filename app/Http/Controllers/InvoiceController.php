@@ -54,7 +54,6 @@ class InvoiceController extends Controller
         $invoice = new Invoice;
         
         $invoice->due_date = $request->input('due_date');
-        $invoice->receipt_date = $request->input('receipt_date');
         $invoice->payment_type_id = $request->input('payment_type_id');
         $invoice->client_id = $request->input('client_id');
         $invoice->invoice_state_id = $request->input('invoice_state_id');
@@ -106,11 +105,12 @@ class InvoiceController extends Controller
         //     $invoice->invoice_state_id = $request->input('invoice_state_id');
         // } else {
             $invoice->due_date = $request->input('due_date');
-            $invoice->receipt_date = $request->input('receipt_date');
             $invoice->payment_type_id = $request->input('payment_type_id');
             $invoice->client_id = $request->input('client_id');
             $invoice->invoice_state_id = $request->input('invoice_state_id');
         // }
+
+        //$invoice->fill($request->all());
 
         $invoice->save();
 
@@ -158,22 +158,28 @@ class InvoiceController extends Controller
 
     public function updateState(UpdateRequest $request, Invoice $invoice)
     {
-        // if(request('invoice_state_id') !== $invoice->invoice_state_id) {
-        //     $invoice->invoice_state_id = $request->input('invoice_state_id');
-        // } else {
+        //$invoice = Invoice::findOrFail($invoice)->first();
+
+        //if ($request->get('invoice_state_id') != $invoice->invoice_state_id) {
+        if (request('invoice_state_id') != $invoice->invoice_state_id) {
+
+            $invoice->invoice_state_id = $request->get('invoice_state_id');
+
+            $invoice->save();
+        }
+        // else {
         //     $invoice->due_date = $request->input('due_date');
-        //     $invoice->receipt_date = $request->input('receipt_date');
         //     $invoice->payment_type_id = $request->input('payment_type_id');
         //     $invoice->client_id = $request->input('client_id');
         //     $invoice->invoice_state_id = $request->input('invoice_state_id');
         // }
         
-        $invoice->invoice_state_id = $request->input('invoice_state_id');
+        //$invoice->invoice_state_id = $request->input('invoice_state_id');
         //$invoice->fill(['invoice_state_id' => $request->input('invoice_state_id')])->save();
         
 
         //dd($request);
-        $invoice->save();
+        //$invoice->save();
 
         return redirect()->route('invoices.index');
     }

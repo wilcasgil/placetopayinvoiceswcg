@@ -65,13 +65,6 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label for="receipt_date">Receipt Date:</label>
-                                <input type="date" class="form-control" id="receipt_date" name="receipt_date" placeholder="Type a receipt date" value="{{ old('receipt_date') }}" required>
-                            </div>
-                        </div>
-
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label for="payment_type_id">Payment Type</label>
