@@ -40,12 +40,7 @@
                                 </select>
                             </div>
                         </div>                        
-<<<<<<< HEAD
-
-                        <div class="col-xs-2">
-=======
                         <!-- <div class="col-xs-2">
->>>>>>> cdff8d741cbabb8526a64350d8b778afbb316444
                             <div class="form-group">
                                 <label for="last_name">Last Name:</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a last name" value="" required>
@@ -67,13 +62,6 @@
                             <div class="form-group">
                                 <label for="due_date">Due Date:</label>
                                 <input type="date" class="form-control" id="due_date" name="due_date" placeholder="Type a due date" value="{{ old('due_date') }}" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label for="receipt_date">Receipt Date:</label>
-                                <input type="date" class="form-control" id="receipt_date" name="receipt_date" placeholder="Type a receipt date" value="{{ old('receipt_date') }}" required>
                             </div>
                         </div>
 

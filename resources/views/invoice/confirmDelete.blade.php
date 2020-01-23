@@ -22,7 +22,6 @@
         <table class="table table-hover table-sm">
             <thead>
                 <th>Due Date</th>
-                <th>Receipt Date</th>
                 <th>Payment Type</th>
                 <th>Client</th>
                 <th>Invoice State</th>
@@ -31,7 +30,6 @@
             <tbody>                
                 <tr>
                     <td>{{ $invoice->due_date }}</td>
-                    <td>{{ $invoice->receipt_date }}</td>
                     <td>{{ $invoice->paymentType->name }}</td>
                     <td>{{ $invoice->client->name }}</td>
                     <td>{{ $invoice->invoiceState->name }}</td>
