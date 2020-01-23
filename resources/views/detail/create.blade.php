@@ -66,30 +66,9 @@
                                 </select>
                             </div>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="subtotal">Subtotal:</label>
-                            <input type="text" class="form-control" id="subtotal" name="subtotal" placeholder="Type a subtotal" value="{{ old('subtotal') }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="iva">Iva:</label>
-                            <input type="text" class="form-control" id="iva" name="iva" placeholder="Type a iva" value="{{ old('iva') }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="total">Total:</label>
-                            <input type="text" class="form-control" id="total" name="total" placeholder="Type a total" value="{{ old('total') }}" required>
-                        </div> -->                        
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
-
-                <!-- <div class="col-xs-1">
-                    <button onclick={__addProductToDetail} class="btn btn-primary form-control" id="btn-agregar">
-                        <i class="glyphicon glyphicon-plus"></i>
-                    </button>
-                </div> -->
             </form>
         </div>
     </div>

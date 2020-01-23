@@ -39,20 +39,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>                        
-                        <!-- <div class="col-xs-2">
-                            <div class="form-group">
-                                <label for="last_name">Last Name:</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Type a last name" value="" required>
-                            </div>
                         </div>
-
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Type a email" value="{{ old('email') }}" required>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
 
@@ -95,26 +82,4 @@
 
         </div>
     </div>
-
-    <!-- <button if={detail.length > 0 && client_id > 0} onclick={__save} class="btn btn-default btn-lg btn-block">
-        Guardar
-    </button> -->
-
-    <!-- <script>
-    $(document).ready(function(){
-        $("#client_id").change(function(){
-        var client = $(this).val();
-        $.get('dataByClient/'+client, function(data){
-    //esta el la peticion get, la cual se divide en tres partes. ruta,variables y funcion
-            console.log(data);
-            var lastName_select = '<input value="">'
-                for (var i=0; i<data.length;i++)
-                lastName_select+='<input value="'+data[i].id+''+data[i].last_name+'">';
-
-                $("#last_name").html(lastName_select);
-
-        });
-        });
-    });
-    </script> -->
 @endsection

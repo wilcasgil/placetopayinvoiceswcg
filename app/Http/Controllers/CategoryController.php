@@ -41,7 +41,8 @@ class CategoryController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $category = new Category();        
+        $category = new Category();
+        
         $category->name = $request->input('name');
         
         $category->save();

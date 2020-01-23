@@ -15,7 +15,6 @@ class CreatePaymentTypesTable extends Migration
     {
         Schema::create('payment_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->increments('id');
             $table->string('name', 30)->unique();
             $table->boolean('active')->default(1);
             $table->timestamps();

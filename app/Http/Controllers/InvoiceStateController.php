@@ -42,6 +42,7 @@ class InvoiceStateController extends Controller
     public function store(StoreRequest $request)
     {
         $invoiceState = new InvoiceState;
+        
         $invoiceState->name = $request->input('name');
 
         $invoiceState->save();

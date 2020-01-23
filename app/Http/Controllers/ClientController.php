@@ -42,6 +42,7 @@ class ClientController extends Controller
     public function store(StoreRequest $request)
     {
         $client = new Client;
+        
         $client->name = $request->input('name');
         $client->last_name = $request->input('last_name');
         $client->email = $request->input('email');

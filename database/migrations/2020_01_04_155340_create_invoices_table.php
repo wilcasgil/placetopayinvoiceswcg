@@ -20,13 +20,11 @@ class CreateInvoicesTable extends Migration
             $table->unsignedBigInteger('payment_type_id');
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('invoice_state_id');
-            //$table->unsignedInteger('invoice_state_id');
             $table->timestamps();
 
             $table->foreign('payment_type_id')->references('id')->on('payment_types')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('invoice_state_id')->references('id')->on('invoice_states')->onDelete('cascade');
-            //$table->foreign('invoice_state_id')->references('id')->on('invoice_states');
         });
     }
 

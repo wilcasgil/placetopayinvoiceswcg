@@ -42,6 +42,7 @@ class PaymentTypeController extends Controller
     public function store(StoreRequest $request)
     {
         $paymentType = new PaymentType;
+        
         $paymentType->name = $request->input('name');
 
         $paymentType->save();

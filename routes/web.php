@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function (){
+    
     Route::resource('clients', 'ClientController');
     Route::get('/clients/{id}/confirmDelete', 'ClientController@confirmDelete');
 
@@ -36,7 +37,6 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('invoices', 'InvoiceController');
     Route::get('invoices/{id}/confirmDelete', 'InvoiceController@confirmDelete');
     Route::get('invoices/{id}/editState', 'InvoiceController@editState');
-    //Route::patch('invoices/{id}', 'InvoiceController@updateState')->name('invoices.updateState');
     Route::patch('invoices', 'InvoiceController@updateState')->name('invoices.updateState');
 
     Route::resource('details', 'DetailController');

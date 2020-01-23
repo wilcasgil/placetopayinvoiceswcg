@@ -42,16 +42,4 @@ class Invoice extends Model
     {
         return $this->hasMany(Detail::class);
     }
-
-    //protected $fillable = ['invoice_state_id'];
-
-    // protected static function boot() {
-    //     parent::boot();
-    
-    //     self::updating(function($invoice) {
-    //         if($invoice->isDirty('invoice_state_id')) { //si ha cambiado el correo
-    //             return true;
-    //         }
-    //     });
-    // }
 }

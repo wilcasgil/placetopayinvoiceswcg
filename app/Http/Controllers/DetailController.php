@@ -45,6 +45,7 @@ class DetailController extends Controller
     public function store(StoreRequest $request)
     {
         $detail = new Detail;
+        
         $detail->quantity = $request->input('quantity');
         $detail->price = $request->input('price');
         $detail->invoice_id = $request->input('invoice_id');
@@ -80,6 +81,7 @@ class DetailController extends Controller
     public function edit(Detail $detail)
     {
         $invoices = Invoice::all();
+
         $subcategories = Subcategory::all();
 
         return response()->view('detail.edit', compact('detail', 'invoices', 'subcategories'));

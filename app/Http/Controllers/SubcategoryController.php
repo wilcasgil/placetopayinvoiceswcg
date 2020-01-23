@@ -43,6 +43,7 @@ class SubcategoryController extends Controller
     public function store(StoreRequest $request)
     {
         $subcategory = new Subcategory;
+        
         $subcategory->name = $request->input('name');
         $subcategory->price = $request->input('price');
         $subcategory->stock = $request->input('stock');
