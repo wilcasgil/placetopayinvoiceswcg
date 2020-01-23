@@ -157,12 +157,12 @@ class InvoiceController extends Controller
 
     public function updateState(UpdateRequest $request, Invoice $invoice)
     {
-        //$invoice->invoice_state_id = $request->input('invoice_state_id');
+        $invoice->invoice_state_id = $request->input('invoice_state_id');
 
         //dd($request);
-        //$invoice->save();
+        $invoice->save();
 
-        $sql = DB::update('update invoices SET invoice_state_id=' .$request->invoice_state_id. ' WHERE id='.$invoice->id);
+        //$sql = DB::update('update invoices SET invoice_state_id=' .$request->invoice_state_id. ' WHERE id='.$invoice->id);
 
         //$invoice = Invoice::findOrFail($request->id);
         //$invoice = Invoice::findOrFail($invoice)->first();

@@ -32,13 +32,13 @@
 
                 <div class="form-group">
                     <label for="due_date">Due Date:</label>
-                    <input type="date" class="form-control" id="due_date" name="due_date" placeholder="Type a due date" value="{{ $invoice->due_date }}" required>
+                    <input type="date" class="form-control" id="due_date" name="due_date" placeholder="Type a due date" value="{{ $invoice->due_date }}">
                 </div>
 
                 <div class="form-group">
                     <label for="payment_type_id">Payment Type</label>
-                    <select class="form-control" id="payment_type_id" name="payment_type_id" required>
-                        <option value="">Please select a payment type</option>
+                    <select class="form-control" id="payment_type_id" name="payment_type_id">
+                        <option value="">{{ $invoice->paymentType->name }}</option>
                             @foreach ($paymentTypes as $paymetType)
                                 <option value="{{ $paymetType->id }}">{{ $paymetType->name }}</option>
                             @endforeach
@@ -47,8 +47,8 @@
 
                 <div class="form-group">
                     <label for="client_id">Client</label>
-                    <select class="form-control" id="client_id" name="client_id" required>
-                        <option value="">Please select a client</option>
+                    <select class="form-control" id="client_id" name="client_id">
+                        <option value="">{{ $invoice->client->name }}</option>
                             @foreach ($clients as $client)
                                 <option value="{{ $client->id }}">{{ $client->name }}</option>
                             @endforeach
@@ -57,8 +57,8 @@
                 
                 <div class="form-group">
                     <label for="invoice_state_id">Invoice State</label>
-                    <select class="form-control" id="invoice_state_id" name="invoice_state_id" required>
-                        <option value="">Please select a invoice state</option>
+                    <select class="form-control" id="invoice_state_id" name="invoice_state_id">
+                        <option value="">{{ $invoice->invoiceState->name }}</option>
                             @foreach ($invoiceStates as $invoiceState)
                                 <option value="{{ $invoiceState->id }}">{{ $invoiceState->name }}</option>
                             @endforeach
