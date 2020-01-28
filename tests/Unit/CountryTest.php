@@ -20,7 +20,9 @@ class CountryTest extends TestCase
     {
         $country = factory(Country::class)->create();
         
-        $this->assertEquals('/country/' . $country->name,
-                                          $country->active);
+        $this->assertDatabaseMissing('countries', [
+            'name' => $country->name,
+            'active' => $country->active,
+        ]);        
     }
 }
