@@ -9,9 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Subcategory extends Model
 {
     /**
-     * category
-     *
-     * @return BelongsTo
+     * category.
      */
     public function category(): BelongsTo
     {
@@ -19,9 +17,7 @@ class Subcategory extends Model
     }
 
     /**
-     * details
-     *
-     * @return HasMany
+     * details.
      */
     public function details(): HasMany
     {

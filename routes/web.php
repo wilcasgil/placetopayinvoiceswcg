@@ -17,8 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function (){
-    
+Route::middleware(['auth'])->group(function () {
     Route::resource('clients', 'ClientController');
     Route::get('/clients/{id}/confirmDelete', 'ClientController@confirmDelete');
 

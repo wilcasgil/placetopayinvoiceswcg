@@ -8,8 +8,6 @@ class DropChangesColumnInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -22,13 +20,10 @@ class DropChangesColumnInvoicesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            //
         });
     }
 }
