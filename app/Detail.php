@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Detail extends Model
 {
     /**
-     * subcategory
-     *
-     * @return BelongsTo
+     * subcategory.
      */
     public function subcategory(): BelongsTo
     {
@@ -18,9 +16,7 @@ class Detail extends Model
     }
 
     /**
-     * invoice
-     *
-     * @return BelongsTo
+     * invoice.
      */
     public function invoice(): BelongsTo
     {

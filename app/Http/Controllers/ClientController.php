@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Client;
-
 use App\Http\Requests\Client\StoreRequest;
 use App\Http\Requests\Client\UpdateRequest;
 
@@ -28,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $clients = new Client;
+        $clients = new Client();
 
         return response()->view('client.create', compact('clients'));
     }
@@ -36,13 +35,12 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
-        $client = new Client;
-        
+        $client = new Client();
+
         $client->name = $request->input('name');
         $client->last_name = $request->input('last_name');
         $client->email = $request->input('email');
@@ -55,7 +53,6 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
     public function show(Client $client)
@@ -66,7 +63,8 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Client $client)
@@ -77,8 +75,6 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequest $request
-     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Client $client)
@@ -86,7 +82,7 @@ class ClientController extends Controller
         $client->name = $request->input('name');
         $client->last_name = $request->input('last_name');
         $client->email = $request->input('email');
-        
+
         $client->save();
 
         return redirect()->route('clients.index');
@@ -95,7 +91,8 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -108,11 +105,9 @@ class ClientController extends Controller
     }
 
     /**
-     * confirmDelete
+     * confirmDelete.
      *
-     * @param  mixed $id
-     *
-     * @return void
+     * @param mixed $id
      */
     public function confirmDelete($id)
     {

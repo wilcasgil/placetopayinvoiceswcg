@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 
@@ -28,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-       $categories = new Category;
+        $categories = new Category();
 
         return response()->view('category.create', compact('categories'));
     }
@@ -36,15 +35,14 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
         $category = new Category();
-        
+
         $category->name = $request->input('name');
-        
+
         $category->save();
 
         return redirect()->route('categories.index');
@@ -53,7 +51,6 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -64,7 +61,8 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
@@ -75,8 +73,6 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequest $request
-     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Category $category)
@@ -91,7 +87,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -104,16 +101,14 @@ class CategoryController extends Controller
     }
 
     /**
-     * confirmDelete
+     * confirmDelete.
      *
-     * @param  mixed $id
-     *
-     * @return void
+     * @param mixed $id
      */
     public function confirmDelete($id)
     {
         $category = Category::findOrFail($id);
-        
+
         return response()->view('category.confirmDelete', compact('category'));
     }
 }

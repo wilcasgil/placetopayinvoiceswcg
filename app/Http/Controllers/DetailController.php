@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Detail;
-use App\Invoice;
-use App\Subcategory;
-
 use App\Http\Requests\Detail\StoreRequest;
 use App\Http\Requests\Detail\UpdateRequest;
-
+use App\Invoice;
+use App\Subcategory;
 use Illuminate\Support\Facades\Config;
 
 class DetailController extends Controller
@@ -20,7 +18,6 @@ class DetailController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -39,13 +36,12 @@ class DetailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
-        $detail = new Detail;
-        
+        $detail = new Detail();
+
         $detail->quantity = $request->input('quantity');
         $detail->price = $request->input('price');
         $detail->invoice_id = $request->input('invoice_id');
@@ -64,7 +60,8 @@ class DetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Detail $detail)
@@ -75,7 +72,8 @@ class DetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Detail $detail)
@@ -90,8 +88,9 @@ class DetailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Detail $detail)
@@ -114,7 +113,8 @@ class DetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'between:3,100|regex:/^[\pL\s\-]+$/u',
             'price' => 'numeric',
-            'stock' => 'numeric',            
+            'stock' => 'numeric',
             'category' => 'numeric|exists:categories,id',
         ];
     }
