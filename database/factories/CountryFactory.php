@@ -6,7 +6,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Country::class, function (Faker $faker) {
     return [
-        'name' => $faker->unique()->country,
-        'active' => $faker->boolean(),
+        'name' => $faker->country,
+
+        //'name' => $faker->unique()->country,        
+        //'active' => $faker->boolean(),
     ];
 });
