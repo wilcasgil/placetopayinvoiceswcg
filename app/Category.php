@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     /**
-     * products_services.
+     * subcategories.
      */
     public function subcategories(): HasMany
     {
