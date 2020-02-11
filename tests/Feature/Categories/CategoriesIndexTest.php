@@ -70,6 +70,6 @@ class CategoriesIndexTest extends TestCase
 
         $response->assertSee(route('categories.show', $category));
         $response->assertSee('Edit', route('categories.edit', $category));
-        $response->assertSee('Delete', '/categories/'.$category->id.'/confirmDelete');
+        $response->assertSee('Delete', '/categories/' . $category->id . '/confirmDelete');
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col">
-        <h1>Delete Category {{ $category->name }}</h1>
+        <h1>{{ __('Delete Category') }} {{ __($category->name) }}</h1>
     </div>
 </div>
 <br>
@@ -18,7 +18,7 @@
 <br>
 
 <div class="table-responsive-lg">
-    <h3>Details</h3>
+    <h3>{{ __('Details') }}</h3>
     <table class="table table-hover table-sm">
         <thead>
             <th>{{ __('Id') }}</th>

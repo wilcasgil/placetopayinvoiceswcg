@@ -41,7 +41,7 @@ class CategoriesConfirmDeleteTest extends TestCase
 
         $response = $this->actingAs($user)->get('/categories/' . $category->id . '/confirmDelete');
 
-        $response->assertSee('Delete Category', $category->name );
+        $response->assertSee('Delete Category', $category->name);
         $response->assertSee('Back', route('categories.index'));
         $response->assertSee('Edit', route('categories.edit', $category));
         $response->assertSee('Details');
