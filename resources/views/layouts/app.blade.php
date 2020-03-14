@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- jQuery CDN for EasyAutocomplete-1.3.5-->
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>    
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <!-- JS file -->
     <script src="{{asset('EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js')}}"></script>
     <!-- CSS file -->
@@ -32,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('EasyAutocomplete-1.3.5/easy-autocomplete.themes.min.css')}}">
     <link rel="stylesheet" href="{{asset('EasyAutocomplete-1.3.5/easy-autocomplete.min.css')}}">
 </head>
+
 <body>
     <div class="container" id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -48,21 +50,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <!-- <ul class="nav justify-content-left"> -->
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/home">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('paymentTypes.index') }}">Payment Types</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('paymentTypes.index') }}">Payment Types</a>
+                        </li>
                     </ul>
 
                     <form class="form-inline">
@@ -74,32 +76,31 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -119,13 +120,13 @@
     <br><br><br><br>
 
     <footer class="footer">
-        <div class="card">            
+        <div class="card">
             <div class="card-footer text-muted text-center">
                 Copyright &copy; created by WCG - {{ date('Y') }} for &reg; Placetopay
             </div>
-        </div>            
+        </div>
     </footer>
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -138,9 +139,10 @@
     <script src="{{asset('EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js')}}"></script>
 
     <script>
-        function baseUrl(url){
-            return '{{url('')}}/' + url;
+        function baseUrl(url) {
+            return '{{url(', ')}}/' + url;
         }
     </script>
 </body>
+
 </html>

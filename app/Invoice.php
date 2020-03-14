@@ -9,9 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Invoice extends Model
 {
     /**
-     * paymentType
-     *
-     * @return BelongsTo
+     * paymentType.
      */
     public function paymentType(): BelongsTo
     {
@@ -19,9 +17,7 @@ class Invoice extends Model
     }
 
     /**
-     * client
-     *
-     * @return BelongsTo
+     * client.
      */
     public function client(): BelongsTo
     {
@@ -29,9 +25,7 @@ class Invoice extends Model
     }
 
     /**
-     * invoiceState
-     *
-     * @return BelongsTo
+     * invoiceState.
      */
     public function invoiceState(): BelongsTo
     {

@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PaymentType extends Model
 {
     /**
-     * invoices
-     *
-     * @return HasMany
+     * invoices.
      */
     public function invoices(): HasMany
     {

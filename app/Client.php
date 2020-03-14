@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Client extends Model
 {
     /**
-     * invoices
-     *
-     * @return HasMany
+     * invoices.
      */
     public function invoices(): HasMany
     {
@@ -19,6 +17,6 @@ class Client extends Model
 
     public function findByLastName($c)
     {
-        return $this->where('last_name', 'like', "%$c%")->get();
+        return $this->where('last_name', 'like', "%{$c}%")->get();
     }
 }

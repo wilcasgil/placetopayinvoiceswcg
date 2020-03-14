@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\InvoiceState;
-
 use App\Http\Requests\InvoiceState\StoreRequest;
 use App\Http\Requests\InvoiceState\UpdateRequest;
+use App\InvoiceState;
 
 class InvoiceStateController extends Controller
 {
@@ -28,20 +27,20 @@ class InvoiceStateController extends Controller
      */
     public function create()
     {
-        $invoiceStates = new InvoiceState;
-        
+        $invoiceStates = new InvoiceState();
+
         return response()->view('invoiceState.create', compact('invoiceStates'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
-        $invoiceState = new InvoiceState;
+        $invoiceState = new InvoiceState();
+
         $invoiceState->name = $request->input('name');
 
         $invoiceState->save();
@@ -52,7 +51,6 @@ class InvoiceStateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  InvoiceState $invoiceState
      * @return \Illuminate\Http\Response
      */
     public function show(InvoiceState $invoiceState)
@@ -63,7 +61,6 @@ class InvoiceStateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  InvoiceState $invoiceState
      * @return \Illuminate\Http\Response
      */
     public function edit(InvoiceState $invoiceState)
@@ -74,8 +71,6 @@ class InvoiceStateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequest $request
-     * @param  InvoiceState $invoiceState
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, InvoiceState $invoiceState)
@@ -91,7 +86,8 @@ class InvoiceStateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

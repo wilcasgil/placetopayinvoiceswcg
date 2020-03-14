@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\PaymentType;
-
 use App\Http\Requests\PaymentType\StoreRequest;
 use App\Http\Requests\PaymentType\UpdateRequest;
+use App\PaymentType;
 
 class PaymentTypeController extends Controller
 {
@@ -28,20 +27,20 @@ class PaymentTypeController extends Controller
      */
     public function create()
     {
-        $paymentTypes = new PaymentType;
-        
+        $paymentTypes = new PaymentType();
+
         return response()->view('paymentType.create', compact('paymentTypes'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
-        $paymentType = new PaymentType;
+        $paymentType = new PaymentType();
+
         $paymentType->name = $request->input('name');
 
         $paymentType->save();
@@ -52,7 +51,6 @@ class PaymentTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  PaymentType $paymentType
      * @return \Illuminate\Http\Response
      */
     public function show(PaymentType $paymentType)
@@ -63,7 +61,6 @@ class PaymentTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  PaymentType $paymentType
      * @return \Illuminate\Http\Response
      */
     public function edit(PaymentType $paymentType)
@@ -74,8 +71,6 @@ class PaymentTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequest $request
-     * @param  PaymentType $paymentType
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, PaymentType $paymentType)
@@ -91,7 +86,8 @@ class PaymentTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -104,11 +100,9 @@ class PaymentTypeController extends Controller
     }
 
     /**
-     * confirmDelete
+     * confirmDelete.
      *
-     * @param  mixed $id
-     *
-     * @return void
+     * @param mixed $id
      */
     public function confirmDelete($id)
     {

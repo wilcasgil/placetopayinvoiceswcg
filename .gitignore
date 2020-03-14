@@ -13,3 +13,4 @@ yarn-error.log
 bootstrap/compiled.php
 app/storage/
 _ide_helper.php
+php-cs-fixer
