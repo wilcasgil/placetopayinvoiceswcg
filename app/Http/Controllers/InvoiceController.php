@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
+use Illuminate\Http\Request;
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
+use App\Imports\InvoicesImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Invoice;
+use App\Client;
 use App\InvoiceState;
 use App\PaymentType;
 use App\Subcategory;
@@ -155,5 +159,14 @@ class InvoiceController extends Controller
         $invoice->save();
 
         return redirect()->route('invoices.index');
+    }
+
+    public function importExcel(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new InvoicesImport, $file);
+
+        return back();
+        // return back()->with('message', 'Import ok');
     }
 }

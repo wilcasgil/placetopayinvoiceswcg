@@ -11,6 +11,29 @@
     <div class="col">
         <a class="btn btn-primary" href="{{ route('invoices.create') }}">Create a new invoice</a>
     </div>
+
+    <div class="col">
+        <form action="{{ route('invoices.import.excel') }}" method="post" enctype="multipart/form-data">
+            @csrf
+
+            <!-- @if(Session::has('message'))
+            <p>{{ Session::get('message') }}</p>
+            @endif             -->
+            <table>
+                <div class="row">
+                    <div class="col">
+                        <input type="file" name="file">
+                    </div>
+                    <td>
+                        <button class="btn btn-success">Import Invoices</button>
+                        <!-- <a class="btn btn-primary">Import invoices</a> -->
+                    </td>
+                </div>
+            </table>
+            
+        </form>
+    </div>
+
     <div class="col">
         <a class="btn btn-primary" href="{{ route('invoiceStates.index') }}">Invoice State</a>
     </div>

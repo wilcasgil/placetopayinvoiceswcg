@@ -123,7 +123,7 @@ class DetailController extends Controller
 
         $detail->delete();
 
-        return redirect()->route('invoice.index');
+        return redirect()->route('invoices.index');
     }
 
     public function confirmDelete($id)
