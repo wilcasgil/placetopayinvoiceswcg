@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Client;
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Imports\InvoicesImport;
-use Maatwebsite\Excel\Facades\Excel;
-
 use App\Invoice;
-use App\Client;
 use App\InvoiceState;
 use App\PaymentType;
 use App\Subcategory;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
 {
@@ -21,9 +20,12 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $invoices = Invoice::with(['paymentType'])->paginate();
+        $invoices = Invoice::search($request->input('search'))
+            ->orderBy('id', $request->get('sort', 'DESC'))
+            ->paginate(15)
+        ;
 
         return response()->view('invoice.index', compact('invoices'));
     }
@@ -137,6 +139,11 @@ class InvoiceController extends Controller
         return response()->view('invoice.confirmDelete', compact('invoice'));
     }
 
+    /**
+     * editState.
+     *
+     * @param mixed $id
+     */
     public function editState($id)
     {
         $invoice = Invoice::findOrFail($id);
@@ -161,12 +168,16 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.index');
     }
 
+    /**
+     * importExcel.
+     *
+     * @param mixed $request
+     */
     public function importExcel(Request $request)
     {
         $file = $request->file('file');
-        Excel::import(new InvoicesImport, $file);
+        Excel::import(new InvoicesImport(), $file);
 
         return back();
-        // return back()->with('message', 'Import ok');
     }
 }

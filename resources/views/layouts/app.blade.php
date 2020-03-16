@@ -49,29 +49,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <!-- <ul class="nav justify-content-left"> -->
+
                         <li class="nav-item">
                             <a class="nav-link active" href="/home">Home</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('paymentTypes.index') }}">Payment Types</a>
                         </li>
+                        
                     </ul>
-
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    </form>
-                    <!-- </ul> -->
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
