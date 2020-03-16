@@ -16,9 +16,6 @@
         <form action="{{ route('invoices.import.excel') }}" method="post" enctype="multipart/form-data">
             @csrf
 
-            <!-- @if(Session::has('message'))
-            <p>{{ Session::get('message') }}</p>
-            @endif             -->
             <table>
                 <div class="row">
                     <div class="col">
@@ -26,11 +23,10 @@
                     </div>
                     <td>
                         <button class="btn btn-success">Import Invoices</button>
-                        <!-- <a class="btn btn-primary">Import invoices</a> -->
                     </td>
                 </div>
             </table>
-            
+
         </form>
     </div>
 
@@ -40,7 +36,24 @@
 </div>
 <br>
 
+<div class="card-header d-flex justify-content-between align-items-center">
+
+    <h5 class="mb-0">{{ __('Index of invoices') }}</h5>
+
+    <b-button-toolbar key-nav aria-label="{{ __('Toolbar for products') }}">
+        <b-button-group class="mx-1">
+            <p-import-button size="sm" variant="secondary">
+                <i class="fas fa fw fa-upload"></i> {{ __('Client search') }}
+            </p-import-button>
+        </b-button-group>
+        @include('layouts.__search', ['route' => route('invoices.index')])
+    </b-button-toolbar>
+
+</div>
+<br>
+
 <div class="table-responsive-lg">
+
     <table class="table table-hover table-sm table-dark">
         <thead>
             <th>Number</th>
@@ -69,6 +82,7 @@
             @endforeach
         </tbody>
     </table>
+
 </div>
 
 <div class="mt-3 d-flex justify-content-center">
