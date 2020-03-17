@@ -40,12 +40,7 @@
 
     <h5 class="mb-0">{{ __('Index of invoices') }}</h5>
 
-    <b-button-toolbar key-nav aria-label="{{ __('Toolbar for products') }}">
-        <b-button-group class="mx-1">
-            <p-import-button size="sm" variant="secondary">
-                <i class="fas fa fw fa-upload"></i> {{ __('Client search') }}
-            </p-import-button>
-        </b-button-group>
+    <b-button-toolbar key-nav aria-label="{{ __('Toolbar for products') }}">        
         @include('layouts.__search', ['route' => route('invoices.index')])
     </b-button-toolbar>
 
